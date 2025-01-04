@@ -23,7 +23,7 @@ return [
         'forms_title'=>'Forms',
         'enable'=>'Enable',
         'disable'=>'Disable',
-        'no_forms_avilable'=>'No questions avilable',
+        'no_questions_avilable'=>'No questions avilable',
         'add_form'=>'Add Form',
         'header_message_title'=>'Header',
         'message_title'=>'Message',

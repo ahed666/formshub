@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Generate Code and PIN</title>
+        <title>Device Player</title>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
         <script>

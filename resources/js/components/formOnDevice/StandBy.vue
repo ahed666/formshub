@@ -9,7 +9,7 @@
         components:{},
         data(){
             return{
-                standByImagepath:'/images/deafult/standBy.png',
+                standByImagepath:'/images/deafult/standBy.gif',
             }
         },
     }

@@ -90,7 +90,7 @@ export default {
             currentAnswers:[],
             questionText:null,
             questionOptional:true,
-            questionViewAnswersMode:null,
+            questionViewAnswersMode:'1_column',
             translations:window.translations,
 
         };

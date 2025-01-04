@@ -1,6 +1,6 @@
 <template>
     <div class="grid grid-cols-10 justify-center items-center gap-4 ">
-        <div v-for="(answer, index) in answers" :key="answer.id" class="col-span-2">
+        <div v-for="(answer, index) in answers" :key="answer.id" class="md:col-span-2 xs:col-span-10">
             <input type="radio"
             :name="'answers-question-'+questionId"
             :id="'answer-'+answer.id" @change="chooseAnswer(answer, true,'single')"

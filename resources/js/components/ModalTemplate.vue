@@ -4,7 +4,7 @@
       <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all
+        <div class="inline-block self-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all
         2xl:max-w-screen-lg   md:max-w-screen-md  sm:my-8 sm:align-middle  sm:max-w-lg sm:w-full">
           <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:justify-center sm:items-center text-center sm:mt-0 sm:text-left">
             <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
@@ -19,37 +19,41 @@
                     <slot></slot>
                     </div>
                 </div>
-                <div  class="bg-gray-50 px-4 py-3 sm:px-6 flex space-x-4 rtl:space-x-reverse justify-between ">
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 md:flex xs:flex-wrap space-x-4 
+                rtl:space-x-reverse justify-between ">
 
                   
                     <div class="flex space-x-2 rtl:space-x-reverse justify-between items-center" v-if="extraInfo && step==2">
                       <!-- question status (optional or not ) -->
-                      <div class="grid items-center" v-if="info.questionOptionalComp">
-                        <span class="text-xs">{{ info.questionOptional?"Optional":"Mandetory" }}</span>
-                        <ToggleSwitch  :value="info.questionOptional" @toggle="toggleQuestionOptional"></ToggleSwitch>
+                          <div class="grid items-center" v-if="info.questionOptionalComp">
+                            <span class="text-xs">{{ info.questionOptional?"Optional":"Mandetory" }}</span>
+                            <ToggleSwitch  :value="info.questionOptional" @toggle="toggleQuestionOptional"></ToggleSwitch>
 
-                      </div>
-                      <div class="grid" v-if="info.questionViewAnswersMode">
-                        <label class="text-xs font-bold"or="view-mode">{{ translations.titles.answers_view_mode_title }}</label>
-                        <select class="p-2 rounded-lg" v-model="selectedMode" @change="onSelectionViewModeChange" id="view-mode">
-                          <option v-for="(entry, index) in questionViewAnswersModeTypes" :key="index" :value="getKey(entry)">
-                            {{ getValue(entry) }}
-                          </option>
-                        </select>
-                      </div>
-                      <!-- button -->
-                      <div  v-if="info.buttonMode">
-                        <ButtonComponent :btnClass="'bg-secondary_blue  w-14'" :handleClick="info.handleButtonClick" >
-                          {{ info.buttonTitle }}
-                        </ButtonComponent>
-                      </div>
+                          </div>
+                          <div class="grid" v-if="info.questionViewAnswersMode">
+                            <label class="text-xs font-bold"or="view-mode">{{ translations.titles.answers_view_mode_title }}</label>
+                            <select class="p-1 rounded-lg" v-model="selectedMode" @change="onSelectionViewModeChange" id="view-mode">
+                              <option v-for="(entry, index) in questionViewAnswersModeTypes" :key="index" :value="getKey(entry)">
+                                {{ getValue(entry) }}
+                              </option>
+                            </select>
+                          </div>
+                          <!-- button -->
+                          <div  v-if="info.buttonMode">
+                            <ButtonComponent :btnClass="'bg-secondary_blue  w-14'" :handleClick="info.handleButtonClick" >
+                              {{ info.buttonTitle }}
+                            </ButtonComponent>
+                          </div>
+                          
+                          <div class=" flex justify-center" v-if="errorMessage">
+                                <span class="text-xs text-primary_red  p-2 rounded-lg ">
+                                  {{ errorMessage }}
+                                </span>
+                          </div>
                     </div>
-                    <div class=" flex justify-center" v-if="errorMessage">
-                           <span class="text-xs text-primary_red  p-2 rounded-lg ">
-                            {{ errorMessage }}
-                           </span>
-                    </div>
-                    <div class="flex space-x-2 rtl:space-x-reverse items-center">
+                        
+                    <!-- cancel and save button -->
+                    <div class="flex space-x-2 justify-center rtl:space-x-reverse items-center md:mt-0 xs:mt-2">
                       <ButtonComponent :btnClass="'bg-gray-400  w-14'" :handleClick="closeModal"  >
                         {{translations.buttons.cancel}}
                       </ButtonComponent>
@@ -64,6 +68,7 @@
                           </span>
                       </ButtonComponent>
                     </div>
+                         
                    
                 </div>
 
@@ -134,7 +139,7 @@ import { info } from 'autoprefixer';
     },
     data(){
       return {
-        selectedMode: null, // Will store the user's selected value
+        selectedMode: '1_column', // Will store the user's selected value
         translations:window.translations,
         questionViewAnswersModeTypes:[],
       }

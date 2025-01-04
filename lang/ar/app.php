@@ -23,7 +23,7 @@ return [
         'forms_title'=>'النماذج',
         'enable'=>'تمكين',
         'disable'=>'تعطيل',
-        'no_forms_avilable'=>'لا توجد أسئلة متاحة',
+        'no_questions_avilable'=>'لا توجد أسئلة متاحة',
         'add_form'=>'إضافة نموذج',
         'header_message_title'=>'العنوان',
         'message_title'=>'الرسالة',

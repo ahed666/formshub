@@ -1,5 +1,5 @@
 <template>
-    <div class="mx-16   overflow-y-auto">
+    <div class="mx-16   ">
         <div class="mt-2 w-full pr-2 flex-grow flex justify-center items-center ">
             
                 <LogicAnswers 

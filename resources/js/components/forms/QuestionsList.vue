@@ -3,7 +3,10 @@
         class="gap-2 xl:col-span-8 lg:col-span-8 md:col-span-12 xs:col-span-12
          rounded-lg border-[1px] border-secondary_blue min-h-[50vh] max-h-[90vh] p-4">
 
-        <div class="max-h-[10vh] mb-2 w-full flex justify-between items-center space-x-4 rtl:space-x-reverse">
+        <div class="max-h-[10vh] mb-2 w-full 
+        md:flex md:justify-between 
+        xs:grid xs:justify-center xs:gap-1
+        items-center space-x-4 rtl:space-x-reverse">
             <!-- formTranslations buttons -->
             <div>
                 
@@ -20,7 +23,8 @@
             </div>
         </div>
 
-        <div :class="['overflow-y-auto max-h-[70vh]', { 'opacity-50': formTranslations ? !formTranslations[currentLang].enable : false }]">
+        <div :class="['overflow-y-auto max-h-[70vh] md:p-0 xs:p-4', 
+        { 'opacity-50': formTranslations ? !formTranslations[currentLang].enable : false }]">
 
             <!-- start message -->
             <FormMessage @editMessage="showModal('editformmessagestart')" :type="'Start Page'"
@@ -31,7 +35,7 @@
             <!-- questions -->
             <div :class="{ 'hidden': isLoading }" class="min-h-[50vh] flex justify-center items-center "
                 v-if="formQuestions.length === 0">
-                <span>{{translations.messages.no_forms_avilable}}</span>
+                <span>{{translations.titles.no_questions_avilable}}</span>
             </div>
             <div v-else>
                 <!-- allow drag and drop for question item of form by draggable -->

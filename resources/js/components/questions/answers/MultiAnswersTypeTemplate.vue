@@ -4,7 +4,7 @@
     <div class="grid grid-cols-12 gap-4 justify-center">
        <div :key="index" v-for="(answer,index) in Answers" 
        :class="answer.hide ? 'opacity-50' : 'opacity-100'" 
-       class="col-span-6 border flex justify-between space-x-2 rtl:space-x-reverse items-center rounded-lg p-2">
+       class="md:col-span-6 xs:col-span-12 border flex justify-between space-x-2 rtl:space-x-reverse items-center rounded-lg p-2">
              
              <div class="rounded-full h-6 w-6 bg-secondary_blue text-white text-center ">
                 {{ index+1 }}

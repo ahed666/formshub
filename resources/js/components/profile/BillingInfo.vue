@@ -1,5 +1,5 @@
 <template>
-  <div class="py-8"><div class="border-t border-gray-200"></div></div>
+  <div v-if="translations" class="py-8"><div class="border-t border-gray-200"></div></div>
     <div class="md:grid md:grid-cols-3 md:gap-6">
       <!-- title -->
       <div class="md:col-span-1 flex justify-between">
@@ -77,7 +77,7 @@
 import axios from 'axios';
 import { MessageMixin } from '../mixins/MessageMixin';
 export default {
-  mixins:{MessageMixin},
+  mixins:[MessageMixin],
   data() {
     return {
       billing: {

@@ -3,7 +3,7 @@
         
         <vue-carousel :data="formTranslationsData" :indicators="false" :controls="false"></vue-carousel>
  
-         <div class="flex justify-center items-center gap-4 mt-20">
+         <div class="md:flex xs:grid justify-center items-center gap-4 mt-20">
             <button @click="startForm(translation)" class="border-gray-300 bg-[#F9FAFB] hover:bg-gray-100 border-[2px] rounded-lg text-2xl w-48 max-w-[48] min-w-[48] h-24 font-bold" v-for="(translation,index) in formTranslations">
                   {{ translation.language_name }}
             </button>

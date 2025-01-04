@@ -1,10 +1,10 @@
 <template>
-    <div class="flex space-x-4 items-center">
+    <div class="md:flex xs:grid xs:justify-center space-x-4 md:gap-0 xs:gap-1 items-center">
       <canvas
         ref="signatureCanvas"
-        width="500"
+        width="auto"
         height="250"
-        class="border border-gray-200 rounded-lg bg-gray-100 "
+        class="border border-gray-200 rounded-lg bg-gray-100 touch-none "
         :class="{ 'cursor-crosshair': drawing }" 
         @mousedown="startDrawing"
         @mouseup="stopDrawing"
@@ -47,10 +47,15 @@
     },
     methods: {
       startDrawing(event) {
+        event.preventDefault(); // Prevent scrolling
+
+        console.log('drawing started');
         this.drawing = true;
         this.draw(event);
       },
-      stopDrawing() {
+      stopDrawing(event) {
+        event.preventDefault(); // Prevent scrolling
+
         this.drawing = false;
         this.context.beginPath(); // Begin a new path after stopping the drawing
         this.saveSignature(); // Save the signature when stopping
@@ -59,8 +64,16 @@
         if (!this.drawing) return;
   
         const rect = this.$refs.signatureCanvas.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
+        let x, y;
+        if (event.touches) {
+        // Handle touch events
+        x = event.touches[0].clientX - rect.left;
+        y = event.touches[0].clientY - rect.top;
+        } else {
+            // Handle mouse events
+            x = event.clientX - rect.left;
+            y = event.clientY - rect.top;
+        }
   
         this.context.lineTo(x, y);
         this.context.stroke();

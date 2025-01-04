@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 
-Route::post('/webhook', [StripeWebhookController::class, 'handleWebhook']);
+Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
 
 Route::get('/invoice/download/{id}',[SubscriptionController::class, 'downloadInvoice'])->name('invoice.download');
 

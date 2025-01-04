@@ -2,7 +2,7 @@
 <template>
    
     <div class=" grid grid-cols-10 gap-2 justify-between space-x-2 rtl:space-x-reverse items-center ">
-       <div v-for="(answer,index) in Answers" class="2xl:cols-span-2 lg:col-span-2 md:col-span-2 xs:col-span-5">
+       <div v-for="(answer,index) in Answers" class="2xl:cols-span-2 lg:col-span-2 md:col-span-2 xs:col-span-10">
              
             <div class="grid justify-center items-center border p-1   rounded-lg" v-if="questionType.type_text=='satisfaction'">
                  <div class="flex justify-center items-center mb-1">

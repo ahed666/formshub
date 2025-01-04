@@ -40,7 +40,7 @@
             <div class=" space-x-1 text-sm ">
                 <!-- <span class="font-semibold ">Remark: </span> -->
                 <span :title="device.app_version"
-                class="hover:cursor-pointer whitespace-nowrap overflow-hidden text-ellipsis block max-w-[200px]">{{ device.app_version }}</span>
+                class="hover:cursor-pointer whitespace-nowrap overflow-hidden text-ellipsis block max-w-[125px]">{{ device.app_version }}</span>
             </div>
         </div>
 

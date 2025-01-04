@@ -24,9 +24,9 @@ export default {
     return {
       inactivityTimeout: null, // Holds the inactivity timeout reference
       showWarning: false, // Controls visibility of the warning message
-      warningDelay: 1 * 60 * 1000, // Show warning after 2 minutes (120000 milliseconds)
+      warningDelay: 2 * 60 * 1000, // Show warning after 2 minutes (120000 milliseconds)
       remainingTime: 120, // Time remaining before the page refreshes after showing the warning (120 seconds)
-      refreshDelay: 60 * 1000, // Additional 30 seconds delay before refreshing the page
+      refreshDelay: 30 * 1000, // Additional 30 seconds delay before refreshing the page
       countdownInterval: null, // Reference to the countdown interval
       warningTimeout: null // Holds the warning timeout reference for the final refresh
     };

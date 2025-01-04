@@ -1,7 +1,7 @@
 <!-- ModalTemplate.vue -->
 <template>
    
-     <div class="flex space-x-2 rtl:space-x-reverse  justify-center">
+     <div class="md:flex md:space-x-2 md:space-y-0 xs:grid xs:space-x-0 xs:space-y-2 rtl:space-x-reverse  justify-center">
         <div v-for="(answer,index) in Answers" class="border flex justify-between space-x-2 rtl:space-x-reverse items-center rounded-lg p-2">
         
               <input @change="changeAnswerText(index,$event)" type="text" name=""
