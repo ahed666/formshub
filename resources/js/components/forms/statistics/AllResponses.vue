@@ -5,9 +5,9 @@
       <PrimaryButton :title="'Export'" @onClick="exportAllResponses()" />
 
     </div>
-    <div class=" w-full">
-      <table class="min-w-full border border-gray-200">
-        <thead class="bg-gray-100 sticky top-0 z-10"> <!-- Keep header fixed -->
+    <div class=" w-full ">
+      <table class="min-w-full border border-gray-200 md:inline-table  xs:hidden">
+        <thead class="bg-secondary_blue text-white  sticky top-0 z-10"> <!-- Keep header fixed -->
           <tr>
             <th class="py-2 px-4 border-b font-semibold text-center w-1/4">{{ translations.forms.date }}</th>
             <th class="py-2 px-4 border-b font-semibold text-center w-1/4">{{ translations.forms.source }}</th>
@@ -20,7 +20,7 @@
       <!-- Wrapper for scrollable body -->
       <div v-if="responses.length > 0" class="overflow-y-auto " style="max-height: 70vh;">
         <!-- Set your max-height here -->
-        <table class="min-w-full border-t border-gray-200 text-sm">
+        <table class="min-w-full border-t border-gray-200 text-sm  md:inline-table  xs:hidden">
           <tbody>
             <tr v-for="(response, index) in responses.reverse()" :key="index"
               class="border-b hover:bg-gray-50 min-h-14">
@@ -38,6 +38,18 @@
             </tr>
           </tbody>
         </table>
+
+        <!-- on mobile size -->
+        <div v-for="(response, index) in responses.reverse()" :key="index" class="min-w-full border-[1px] border-gray-200 p-1 text-sm xs:grid xs:gap-1 md:hidden">
+            <InfoLine :title="translations.forms.answer" :count="formatDateTime(response.created_at)" :withBottomBorder="false" />
+            <InfoLine :title="translations.forms.source" :count="response.device_id != null ? response.device.name : translations.forms.unknown" :withBottomBorder="false" />
+            <InfoLine :title="translations.forms.completion_avg" :count="formatNumber(response.completion_avg, 2)" :unit="'%'"  :withProgressBar="true" :withBottomBorder="false" />
+            <div class="flex justify-center items-center mt-1">
+                <ViewSvg class="flex justify-center items-center" @click="showResponse(response)" />
+
+
+            </div>
+        </div>
       </div>
     </div>
   </div>
@@ -56,11 +68,12 @@ import ViewResponseModal from '../../modals/ViewResponseModal.vue';
 import ProgressBar from './components/ProgressBar.vue';
 import ViewSvg from '../../svgs/View.vue';
 import Loader from '../../svgs/Loader.vue';
+import InfoLine from './components/InfoLine.vue';
 export default {
   mixins: [StatisticsMixin, MessageMixin],
 
   components: {
-    PrimaryButton, ViewResponseModal, ViewSvg, ProgressBar,Loader
+    PrimaryButton, ViewResponseModal, ViewSvg, ProgressBar,Loader,InfoLine
   },
   props: {
     responses: {

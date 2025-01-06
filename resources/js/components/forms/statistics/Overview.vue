@@ -1,15 +1,26 @@
 <template>
-    <div>
-        <!-- statistic info  -->
-        <div>
+    <div class="h-full flex flex-col  overflow-hidden bg-gray-100">
+        <!-- statistic info  'md:space-y-0 md:space-x-8 xs:space-x-0 rtl:space-x-reverse xs:space-y-4'  -->
+        <div class=" mb-2">
             <FormStatisticsInfo :responses="responses" :createdDate="form.created_at" />
         </div>
-        <div
-            class="h-auto w-full mt-8 flex md:flex-nowrap flex-wrap md:space-y-0 md:space-x-8 xs:space-x-0 rtl:space-x-reverse xs:space-y-4">
-            
-            <Chart class="md:w-[40%] xs:w-full" v-if="legend.length > 0" :legend="legend" :data="chartDataResponsesPerDevices" />
+        <div class="grid md:grid-cols-3  gap-2 ">
+            <div class=" bg-white rounded shadow p-2 xs:col-span-3 md:col-span-1">
+                <h2 class="text-lg font-bold text-center mb-4">{{ translations.dashboard.responsesperdevice_section_title }}</h2>
+                <Chart 
+                :chartHeight="'md:h-[350px] xs:h-[350px] '"
+                :radius="'50%'"
+                :center="['50%', '40%']"
+                class="  "
+                v-if="legend.length > 0" :legend="legend" :data="chartDataResponsesPerDevices" />
+            </div>
+            <div class="bg-white xs:col-span-3 md:col-span-2 p-2 ">
+                <LatestResponsesTable class="  " :questionsWithAnswers="form.questions" :responses="latestResponses" />
 
-            <LatestResponsesTable class="md:w-[60%] xs:w-full" :questionsWithAnswers="form.questions" :responses="latestResponses" />
+            </div>
+           
+          
+
         </div>
 
 

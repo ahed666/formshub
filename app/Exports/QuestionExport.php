@@ -29,8 +29,8 @@ class QuestionExport implements  FromArray, WithEvents
                 $sheet->getStyle('A1')->getAlignment()->setHorizontal('center');
 
                 // Style the table headers (bold, centered)
-                $sheet->getStyle('A2:C3')->getFont()->setBold(true);
-                $sheet->getStyle('A2:C3')->getAlignment()->setHorizontal('center');
+                $sheet->getStyle('A2:C2')->getFont()->setBold(true);
+                $sheet->getStyle('A2:C2')->getAlignment()->setHorizontal('center');
 
                 // Style the table rows (borders)
                 $sheet->getStyle('A3:C' . ($event->sheet->getHighestRow()))

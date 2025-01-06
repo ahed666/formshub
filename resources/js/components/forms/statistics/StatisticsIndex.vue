@@ -1,13 +1,13 @@
 <template>
      <app-template>
-    <div class="bg-white " v-if="form">
+    <div class="" v-if="form">
       <!-- Tabs Navigation -->
-      <div class="flex space-x-4 rtl:space-x-reverse border-b border-gray-300">
+      <div class="md:flex xs:grid p-1  md:gap-0 xs:gap-2 xs:space-x-0 md:space-x-4  rtl:space-x-reverse  border-[1px] border-gray-200">
         <button 
           v-for="tab in tabs" 
           :key="tab" 
           @click="activeTab = tab.code" 
-          :class="['px-4 py-2', activeTab === tab.code ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600']"
+          :class="['px-4 py-2 m-1 border-secondary_blue border-[1px] rounded', activeTab === tab.code ? ' text-white bg-secondary_blue font-bold' : 'text-blue-600 bg-white']"
         >
           {{ tab.title }}
         </button>

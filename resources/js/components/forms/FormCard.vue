@@ -1,7 +1,7 @@
 <template>
-    <label class=" ">
+    <label :class="{'xs:grid xs:justify-center ':!viewOptions}">
 
-        <div class="flex flex-wrap justify-between items-center" :class="{'max-w-[50%]':!viewOptions}">
+        <div class="flex flex-wrap justify-between items-center">
 
             <!-- name -->
              <div class="overflow-hidden  " :class="{'max-w-[50%]':viewOptions}" >
@@ -30,7 +30,8 @@
 
         </div>
 
-        <div class="flex justify-center  items-center space-x-2 rtl:space-x-reverse " :class="{ 'md:mt-4 xs:mt-2 space-x-8 rtl:space-x-reverse': viewOptions }">
+        <div class="flex justify-center  items-center space-x-2 rtl:space-x-reverse "
+         :class="{ 'md:mt-4 xs:mt-2 space-x-8 rtl:space-x-reverse': viewOptions }">
             <!-- num of question -->
 
             <Counter :count="form.questions_count" :unit="[translations.forms.questions_unit, translations.forms.question_single_unit]"

@@ -22,12 +22,16 @@ export const AnswerMixin = {
       },
 
       initialTextAnswer(type_text,answerText){
+        if(answerText==null)
+        {return 'Skipped'}
+        else{
           if(type_text==='drawing')
-          {
+          {  
               const baseURL = process.env.MIX_APP_URL || window.location.origin; // Get base URL
               const fullPath = `${baseURL}/storage/${answerText}`;
               return `<img src="${fullPath}" class="w-auto h-28 object contain border-[1px] border-gray-200 rounded p-1" />`;}
           else return answerText;
+          }
 
       },
       isSelected(answerId) {

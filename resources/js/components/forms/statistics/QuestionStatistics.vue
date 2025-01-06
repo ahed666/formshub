@@ -10,8 +10,9 @@
             <QuestionText class="my-4" :questionText="getCurrentQuestionText()" />
 
             <div
-                class=" md:w-2/3 xs:w-full mt-2 flex md:flex-nowrap xs:flex-wrap md:space-y-0 md:space-x-8 xs:space-x-0 rtl:space-x-reverse xs:space-y-4">
-                <QuestionStatisticsInfo class="md:order-1 xs:order-2 " :answersOnResponse="totalAnswers"
+                class=" md:w-2/3 xs:w-full mt-2 flex md:flex-nowrap xs:flex-wrap md:space-y-0
+                 md:space-x-8 xs:space-x-0 rtl:space-x-reverse xs:space-y-4">
+                <QuestionStatisticsInfo class="md:order-1 xs:order-2 bg-white p-1 rounded" :answersOnResponse="totalAnswers"
                     :skipsCount="totalSkips" :createdDate="currentQuestion.created_at" />
                 <DateFilter class="md:order-2 xs:order-1" :startDate="startDate" :endDate="endDate" :minDate="minDate"
                     :maxDate="maxDate" @setStartDate="setStartDate" @setEndDate="setEndDate"
@@ -19,10 +20,16 @@
             </div>
 
             <div v-if="checkTextQuestions() === false"
-                class="h-auto w-full mt-8 flex md:flex-nowrap flex-wrap md:space-y-0 md:space-x-8 xs:space-x-0 rtl:space-x-reverse xs:space-y-4">
+                class="h-auto w-full mt-8  flex md:flex-nowrap flex-wrap md:space-y-0
+                 md:space-x-8 xs:space-x-0 rtl:space-x-reverse xs:space-y-4">
                 <AnswersTable :answers="allAnswers" />
+                <Chart 
+                :chartHeight="'md:h-[350px] xs:h-[350px] '"
+                :radius="'50%'"
+                :center="['50%', '40%']"
+                class=" bg-white md:w-1/3 xs:w-full"
+                v-if="legend.length > 0" :legend="legend" :data="chartData" />
 
-                <Chart class="md:w-1/3 xs:w-full" v-if="legend.length > 0" :legend="legend" :data="chartData" />
             </div>
 
             <div v-else
@@ -313,6 +320,7 @@ export default {
             });
 
             this.legend = this.chartData.map(item => item.name);
+            console.log('leg:',this.legend);
 
         },
 

@@ -1,4 +1,4 @@
 
-<img src="{{asset('/images/logo/app/main-logo.png')}}"  {{ $attributes }} alt="" srcset="">
+<img src="{{asset('/images/logo/app/main-logo-color.png')}}"  {{ $attributes }} alt="" srcset="">
 
 

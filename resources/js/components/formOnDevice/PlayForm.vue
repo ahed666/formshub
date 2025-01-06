@@ -80,6 +80,7 @@ export default {
         startForm(translation) {
             this.response.translation = translation;
             this.currentStep = 2;
+            this.playSound('Start');
             this.$emit('updateCurrentStep', this.currentStep);
             console.log(this.response, this.currentStep);
 
@@ -87,6 +88,11 @@ export default {
         cancelForm(){
             this.currentStep = 1;
             this.$emit('updateCurrentStep', this.currentStep);
+        },
+        playSound(type){
+            const audio = new Audio(`/sounds/${type}.mp3`); // Path to your sound file
+            audio.play();
+
         },
        async finishForm(questionsWithAnswers) {
             this.response.questionsWithAnswers = questionsWithAnswers;
@@ -102,6 +108,7 @@ export default {
                             if (response.status === 200) {
                                 // If the response status is 200, move to the next step
                                 this.currentStep = 3;
+                                this.playSound('Success');
                             }
                             // may be the subscription for user was expired then refresh form to update the status of device
                             else if(response.status === 403)

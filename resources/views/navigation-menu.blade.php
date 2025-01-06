@@ -7,7 +7,10 @@
            <!-- Logo -->
             <div class=" flex justify-center items-center ">
                 <a href="{{ route('dashboard') }}">
-                    <x-application-mark class="block h-16 w-auto" />
+                    <!-- <x-application-mark class="block h-16 w-auto" /> -->
+                
+                    <img src="{{asset('/images/logo/app/main-logo.png')}}" class="block h-16 w-auto" alt="" srcset="">
+                    
                 </a>
             </div>
         <ul class="space-y-2 mt-10 font-medium text-white">

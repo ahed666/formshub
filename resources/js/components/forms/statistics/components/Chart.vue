@@ -1,7 +1,8 @@
 <template>
-    <div class=" flex-wrap flex items-center flex-col ">
+    <div class=" flex-wrap flex items-center flex-col bg-white p-1">
 
         <v-chart :class="[' ',chartHeight]" v-if="option" :option="option" />
+        
 
     </div>
 </template>

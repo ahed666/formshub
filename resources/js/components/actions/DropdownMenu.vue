@@ -1,9 +1,9 @@
 <template>
-    <div class="relative inline-block text-left">
+    <div class="md:relative inline-block text-left">
       
       <MenuSvg class="w-8 h-8 hover:cursor-pointer" @click="toggleDropdown" />
   
-      <div v-if="isOpen" class="absolute mt-2 w-56 bg-gray-100 border border-gray-200 rounded-md shadow-lg">
+      <div v-if="isOpen" class="absolute  xs:left-2  mt-2 w-56 bg-gray-100 border border-gray-200 rounded-md shadow-lg">
         <ul v-if="options.length>0&&!loading" class="py-1">
           <li  v-for="(option, index) in options"  :key="index">
             <!-- toggle switch -->

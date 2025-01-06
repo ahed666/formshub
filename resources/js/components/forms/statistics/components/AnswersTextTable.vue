@@ -1,5 +1,5 @@
 <template>
-   <div class="max-h-full w-full">
+   <div class="max-h-full w-full bg-white p-1">
   <table class="min-w-full border border-gray-200">
     <thead class="bg-gray-100 sticky top-0 z-10"> <!-- Keep header fixed -->
       <tr>
