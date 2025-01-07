@@ -37,7 +37,7 @@ html.rtl {
                         <x-application-mark class="block h-16 w-auto" />
                     </a>
                 </div> -->
-                <div class="md:none xs:flex justify-end">
+                <div class="md:none sm:none xs:flex justify-end">
                     <button data-drawer-target="logo-sidebar" 
                         data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" 
                         type="button" class=" text-sm

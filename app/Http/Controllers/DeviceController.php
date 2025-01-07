@@ -31,7 +31,7 @@ class DeviceController extends Controller
     public function refreshDevice($code){
         try {
             $this->deviceService->refreshDevice($code);
-            return response()->json(['message' => 'the device refresh Successfuly ']);
+            return response()->json(['message' => __('app.devices.refresh_device_success')]);
         } catch (\Throwable $th) {
             return response()->json(['message' => $th]);
         }
@@ -43,7 +43,7 @@ class DeviceController extends Controller
         try {
             $this->deviceService->restartDevice($code);
 
-            return response()->json(['message' => 'the device restarted Successfuly ']);
+            return response()->json(['message' => __('app.devices.restart_device_success')]);
         } catch (\Throwable $th) {
             return response()->json(['message' => $th]);
         }

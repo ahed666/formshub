@@ -4,7 +4,8 @@
         <StartPage v-if="currentStep == 1" @startform="startForm" :formTranslations="form.translations" />
         <QuestionsTemplate v-else-if="currentStep == 2" @finish="finishForm" :currentTranslation="response.translation"
             :questions="form.questions" @cancel="cancelForm" />
-        <EndPage v-if="currentStep == 3" @startform="startForm" :currentTranslation="response.translation" />
+        <UploadingResponse v-if="currentStep == 3" />
+        <EndPage v-if="currentStep == 4" @startform="startForm" :currentTranslation="response.translation" />
     </div>
 
     <div>
@@ -17,6 +18,7 @@ import StartPage from './StartPage.vue';
 import QuestionsTemplate from './QuestionsTemplate.vue';
 import EndPage from './EndPage.vue';
 import SubmitError from './SubmitError.vue';
+import UploadingResponse from './UploadingResponse.vue';
 export default {
 
     components: {
@@ -24,7 +26,7 @@ export default {
         QuestionsTemplate,
         EndPage,
         SubmitError,
-
+        UploadingResponse,
 
     },
     props: {
@@ -95,9 +97,10 @@ export default {
 
         },
        async finishForm(questionsWithAnswers) {
+            this.currentStep=3;
             this.response.questionsWithAnswers = questionsWithAnswers;
             this.response.device=this.device;
-
+            
             if (this.checkOnlineStatus) {
                 try {
 
@@ -107,7 +110,7 @@ export default {
                         .then(response => {
                             if (response.status === 200) {
                                 // If the response status is 200, move to the next step
-                                this.currentStep = 3;
+                                this.currentStep = 4;
                                 this.playSound('Success');
                             }
                             // may be the subscription for user was expired then refresh form to update the status of device

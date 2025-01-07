@@ -46,7 +46,6 @@ import AddDeviceModal from './components/modals/AddDeviceModal.vue'
 import DashboardIndex from './components/dashboard/Index.vue';
 
 import BillingInfo from './components/profile/BillingInfo.vue'
-
 import Echarts from 'vue-echarts';
 
 import 'echarts/lib/chart/bar'
@@ -58,6 +57,7 @@ import 'echarts/lib/component/tooltip'
 import 'echarts/lib/component/grid'
 import 'echarts/lib/component/toolbox'
 
+import SkippedSvg from './components/svgs/Skipped.vue';
 
 // subscriptions
 import Pricing from './components/subscriptions/Pricing.vue'; 
@@ -93,11 +93,15 @@ app.component('subscription-index', SubscriptionIndex)
 app.component('dashboard-index',DashboardIndex)
 app.component('billing-info',BillingInfo)
 
+
+app.component('skipped-svg',SkippedSvg);
+
 sideBar.component('dashboard-svg',DashboardSvg)
 sideBar.component('device-svg',DeviceSvg)
 sideBar.component('form-svg',FormSvg)
 sideBar.component('profile-svg',ProfileSvg)
 sideBar.component('subscriptions-svg',SubscriptionsSvg)
+
 
 devicePlayer.component('form-device', FormDeviceTemplate)
 

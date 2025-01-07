@@ -1,34 +1,34 @@
 <template>
   <div class="h-full flex flex-col overflow-hidden bg-gray-100">
     <!-- First Row -->
-    <div class="grid md:grid-cols-4 gap-2 mb-2 p-4">
-      <div class="md:col-span-3  rounded shadow p-4">
+    <div class="grid md:grid-cols-4 gap-2 mb-2 ">
+      <div class="bg-white md:col-span-3  rounded-lg shadow p-4">
         <Info :info="data.info" />
       </div>
-      <div class="bg-white rounded shadow p-4">
+      <div class="bg-white rounded-lg shadow p-4">
         <SubscriptionBox :subscription="data.subscription" />
       </div>
     </div>
 
     <!-- Second Row -->
-    <div class="grid md:grid-cols-2 gap-2 mb-2 p-4">
-      <div class="bg-white rounded shadow p-4 overflow-auto">
+    <div class="grid md:grid-cols-2 gap-2 my-2  ">
+      <div class="bg-white rounded-lg shadow p-4 overflow-auto">
         <h1 class="text-lg font-bold text-center mb-4">{{ translations.dashboard.devices_section_title }}</h1>
         <DevicesSection :devices="data.devices" />
       </div>
-      <div class="bg-white rounded shadow p-4 overflow-auto">
+      <div class="bg-white rounded-lg shadow p-4 overflow-auto">
         <h1 class="text-lg font-bold text-center mb-4">{{translations.dashboard.forms_section_title}}</h1>
         <FormsSection :forms="data.forms" />
       </div>
     </div>
 
     <!-- Third Row -->
-    <div class="grid md:grid-cols-2 gap-2 p-4">
+    <div class="grid md:grid-cols-2 gap-2 ">
       <!-- Responses Per Form Chart -->
-      <div class="bg-white rounded shadow p-4">
+      <div class="bg-white rounded-lg shadow p-4">
         <h2 class="text-lg font-bold text-center mb-4">{{ translations.dashboard.responsesperform_section_title }}</h2>
         <Chart
-          :chartHeight="'h-[450px] '"
+          :chartHeight="'md:h-[450px] sm:h-[350px] xs:h-[300px] '"
           :radius="'50%'"
           :center="['50%', '40%']"
           :legend="data.responsesPerForm.legend"
@@ -37,7 +37,7 @@
       </div>
 
       <!-- Responses Per Device Chart -->
-      <div class="bg-white rounded shadow p-4">
+      <div class="bg-white rounded-lg shadow p-4">
         <h2 class="text-lg font-bold text-center mb-4">{{translations.dashboard.responsesperdevice_section_title}}</h2>
         <Chart
           :chartHeight="'h-[450px]'"

@@ -1,5 +1,5 @@
 <template>
-     <div class=" md:w-1/2 xs:w-full bg-white p-2 ">
+     <div class=" md:w-1/2 xs:w-full bg-white rounded-lg p-2 ">
         <InfoLine :title="translations.forms.answers" :count="responses.length" :withBottomBorder="true" />
         <InfoLine :title="translations.forms.completion_avg" :count="calculateCompletionAvg()" :unit="'%'"  :withProgressBar="true" :withBottomBorder="true" />
         <InfoLine :title="translations.forms.age" :count="calculateAge(createdDate)"  />

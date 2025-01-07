@@ -5,7 +5,7 @@
             <FormStatisticsInfo :responses="responses" :createdDate="form.created_at" />
         </div>
         <div class="grid md:grid-cols-3  gap-2 ">
-            <div class=" bg-white rounded shadow p-2 xs:col-span-3 md:col-span-1">
+            <div class=" bg-white rounded-lg shadow p-2 xs:col-span-3 md:col-span-1">
                 <h2 class="text-lg font-bold text-center mb-4">{{ translations.dashboard.responsesperdevice_section_title }}</h2>
                 <Chart 
                 :chartHeight="'md:h-[350px] xs:h-[350px] '"
@@ -14,7 +14,7 @@
                 class="  "
                 v-if="legend.length > 0" :legend="legend" :data="chartDataResponsesPerDevices" />
             </div>
-            <div class="bg-white xs:col-span-3 md:col-span-2 p-2 ">
+            <div class="bg-white rounded-lg xs:col-span-3 md:col-span-2 p-2 ">
                 <LatestResponsesTable class="  " :questionsWithAnswers="form.questions" :responses="latestResponses" />
 
             </div>

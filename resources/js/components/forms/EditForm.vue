@@ -397,7 +397,7 @@ export default {
                 if (response.data.status == true) {
                     this.ifEdit = false;
                     this.fetchData();
-                    this.showAlert('success', 'The Changes Saved Successfully');
+                    this.showAlert('success', this.translations.forms.changes_saved_success);
                     // Redirect to a new route after successfully editing the form
                     // window.location.href = response.data.redirect;
 

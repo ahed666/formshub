@@ -12,11 +12,12 @@
       :spaceBetween="10"
       :modules="modules"
       :breakpoints="{
-        500: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 }
+        300: { slidesPerView: 1 },
+       
+        1024: { slidesPerView: 2 }
       }"
       class="mySwiper px-4">
-    <swiper-slide class="h-auto border-secondary_blue border-[1px] p-3 rounded-[0.5rem] bg-white" 
+    <swiper-slide class="h-auto  p-3 rounded-[0.5rem] bg-gray-100 inset-0 " 
     v-for="(device,index) in devices" :key="index">
         <DeviceCard  :viewOptions="false" :device="device" class="h-auto" /></swiper-slide>
     

@@ -23,13 +23,19 @@ export const AnswerMixin = {
 
       initialTextAnswer(type_text,answerText){
         if(answerText==null)
-        {return 'Skipped'}
+        {return `<div class="flex justify-center items-center space-x-1">
+          <h1>Skipped</h1><svg class="md:h-5 md:w-5 xs:h-3 xs:w-3 text-secondary_blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811V8.69ZM12.75 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061a1.125 1.125 0 0 1-1.683-.977V8.69Z" />
+  </svg>
+          </div>`;}
         else{
           if(type_text==='drawing')
           {  
               const baseURL = process.env.MIX_APP_URL || window.location.origin; // Get base URL
               const fullPath = `${baseURL}/storage/${answerText}`;
-              return `<img src="${fullPath}" class="w-auto h-28 object contain border-[1px] border-gray-200 rounded p-1" />`;}
+              return `<div class="flex justify-center items-center">
+              <img src="${fullPath}" class="w-auto h-28 object contain border-[1px] border-gray-200 rounded p-1" />
+              </div>`;}
           else return answerText;
           }
 

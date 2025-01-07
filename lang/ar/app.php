@@ -51,6 +51,9 @@ return [
         'select_tag_color_title'=>'اختر لون العلامة:',
         'select_rotation_degree_title'=>'اختر درجة التدوير:',
         'successadddevice'=>'تمت إضافة الجهاز بنجاح',
+        'successdeletedevice' => 'تم حذف الجهاز',
+        'refresh_device_success' => 'تم إرسال طلب التحديث إلى الجهاز',
+        'restart_device_success' => 'تم إرسال طلب إعادة التشغيل إلى الجهاز',
 
     ],
 
@@ -92,6 +95,8 @@ return [
         'add_question_modal_title'=>'إضافة سؤال جديد',
         'view_response_question_title'=>'السؤال',
         'view_response_answer_title'=>'الإجابة',
+        'changes_saved_success' => 'تم حفظ التغييرات',
+
     ],
 
     'subscriptions'=>[

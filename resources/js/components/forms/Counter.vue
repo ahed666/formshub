@@ -5,7 +5,7 @@
         class="text-sm text-secondary_blue font-bold rounded-lg px-2 py-1 ">
                              {{ count }} {{ count>1?unit[0]:unit[1] }}
                            </span>
-                           <span v-else class="text-xs text-primary_red">
+                           <span v-else class="text-sm text-primary_red px-2 py-1">
                            {{ zeroCountText }}
                            </span>
     </div>

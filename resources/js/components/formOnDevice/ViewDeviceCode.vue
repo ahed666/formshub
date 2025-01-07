@@ -23,7 +23,7 @@ export default {
     },
     data(){
         return {
-            logoPath:'/images/logo/app/main-logo.png',
+            logoPath:'/images/logo/app/main-logo-color.png',
         }
     }
 }

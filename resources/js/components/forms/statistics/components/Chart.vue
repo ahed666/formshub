@@ -1,5 +1,5 @@
 <template>
-    <div class=" flex-wrap flex items-center flex-col bg-white p-1">
+    <div class=" flex-wrap flex items-center flex-col bg-white p-1 rounded-lg">
 
         <v-chart :class="[' ',chartHeight]" v-if="option" :option="option" />
         

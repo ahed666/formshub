@@ -114,12 +114,11 @@ export default {
                 this.isLoading=true;
                 // Call your delete API here
                 const response = await axios.delete(`/deletedevices/${deviceId}`);
-                console.log('Device deleted:', deviceId, response);
 
                 // Remove the device from the devices array
                 this.removeDeviceFromList(deviceId);
                 this.isLoading=false;
-                this.showAlert('success','The device has been deleted.'); 
+                this.showAlert('success',this.translations.devices.successdeletedevice); 
 
             } catch (error) {
                 this.showAlert('error','Failed to delete the device.'); 

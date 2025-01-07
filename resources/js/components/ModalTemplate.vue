@@ -23,16 +23,16 @@
                 rtl:space-x-reverse justify-between ">
 
                   
-                    <div class="flex space-x-2 rtl:space-x-reverse justify-between items-center" v-if="extraInfo && step==2">
+                    <div class="flex md:space-x-4 xs:space-x-2 rtl:space-x-reverse justify-between items-center" v-if="extraInfo && step==2">
                       <!-- question status (optional or not ) -->
-                          <div class="grid items-center" v-if="info.questionOptionalComp">
-                            <span class="text-xs">{{ info.questionOptional?"Optional":"Mandetory" }}</span>
+                          <div class="grid justify-center items-center" v-if="info.questionOptionalComp">
+                            <span class="text-xs font-bold">{{ info.questionOptional?"Optional":"Mandetory" }}</span>
                             <ToggleSwitch  :value="info.questionOptional" @toggle="toggleQuestionOptional"></ToggleSwitch>
 
                           </div>
                           <div class="grid" v-if="info.questionViewAnswersMode">
                             <label class="text-xs font-bold"or="view-mode">{{ translations.titles.answers_view_mode_title }}</label>
-                            <select class="p-1 rounded-lg" v-model="selectedMode" @change="onSelectionViewModeChange" id="view-mode">
+                            <select class="p-[1px] rounded-lg h-6 text-sm" v-model="selectedMode" @change="onSelectionViewModeChange" id="view-mode">
                               <option v-for="(entry, index) in questionViewAnswersModeTypes" :key="index" :value="getKey(entry)">
                                 {{ getValue(entry) }}
                               </option>

@@ -100,6 +100,7 @@ export default {
             console.log(deviceCode);
             axios.get(`/${action}-device/${deviceCode}`)
                 .then(response => {
+                    console.log(response.data.message);
                     this.showAlert('success', response.data.message);
                 })
                 .catch(error => {

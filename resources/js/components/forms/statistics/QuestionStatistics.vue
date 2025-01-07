@@ -12,9 +12,9 @@
             <div
                 class=" md:w-2/3 xs:w-full mt-2 flex md:flex-nowrap xs:flex-wrap md:space-y-0
                  md:space-x-8 xs:space-x-0 rtl:space-x-reverse xs:space-y-4">
-                <QuestionStatisticsInfo class="md:order-1 xs:order-2 bg-white p-1 rounded" :answersOnResponse="totalAnswers"
+                <QuestionStatisticsInfo class="md:order-1 xs:order-2 bg-white p-1 rounded-lg" :answersOnResponse="totalAnswers-totalSkips"
                     :skipsCount="totalSkips" :createdDate="currentQuestion.created_at" />
-                <DateFilter class="md:order-2 xs:order-1" :startDate="startDate" :endDate="endDate" :minDate="minDate"
+                <DateFilter class="md:order-2 xs:order-1 bg-white p-1 rounded-lg" :startDate="startDate" :endDate="endDate" :minDate="minDate"
                     :maxDate="maxDate" @setStartDate="setStartDate" @setEndDate="setEndDate"
                     @applyDateFilter="applyDateFilter" @export="exportQuestion()" />
             </div>
@@ -255,7 +255,6 @@ export default {
                     this.totalSkips++;
                 }
             });
-            console.log('filtered responses is ', this.filteredResponses, 'and skips count is :', this.totalSkips);
         },
 
         // calculate num of answers on this response for currentquestion

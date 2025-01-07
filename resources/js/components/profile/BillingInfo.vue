@@ -1,6 +1,6 @@
 <template>
-  <div v-if="translations" class="py-8"><div class="border-t border-gray-200"></div></div>
-    <div class="md:grid md:grid-cols-3 md:gap-6">
+  <div class="py-8"><div class="border-t border-gray-200"></div></div>
+    <div  class="md:grid md:grid-cols-3 md:gap-6">
       <!-- title -->
       <div class="md:col-span-1 flex justify-between">
         <div class="px-4 sm:px-0">
@@ -33,7 +33,6 @@
                   v-model="billing.billing_country"
                   class="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-300"
                 >
-                  <option value="">Select Country</option>
                   <option v-for="country in countries" :key="country.country_code" :value="country.country_code">
                     {{ country.country }}
                   </option>
@@ -78,6 +77,12 @@ import axios from 'axios';
 import { MessageMixin } from '../mixins/MessageMixin';
 export default {
   mixins:[MessageMixin],
+  props: {
+        translations: {
+            type: Object,
+            required: true,
+        },
+    },
   data() {
     return {
       billing: {
@@ -86,7 +91,7 @@ export default {
         
         billing_city: '',
         billing_trn: '',
-        translations:window.translations,
+        
       },
       countries: [], // Will be fetched from the backend
     };

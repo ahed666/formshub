@@ -53,8 +53,11 @@ return [
         'edit_title'=>'Edit Device',
         'select_tag_color_title'=>'Select a tag color:',
         'select_rotation_degree_title'=>'Select a rotation degree:',
-        'successadddevice'=>'The device Added Successfully',
-        
+        'successadddevice'=>' device Added',
+        'successdeletedevice'=>'device deleted',
+        'refresh_device_success'=>'Refreshed request sent to device',
+        'restart_device_success'=>'Restart request sent to device',
+
 
     ],
     'forms'=>[
@@ -95,7 +98,8 @@ return [
         'add_question_modal_title'=>'Add New Question',
         'view_response_question_title'=>'Question',
         'view_response_answer_title'=>'Answer',
-
+        'changes_saved_success'=>'Changes saved',
+      
 
 
 
