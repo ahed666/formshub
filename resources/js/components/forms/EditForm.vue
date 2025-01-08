@@ -22,7 +22,7 @@
                 :defaultLang="defaultLang"
                 @changeLanguage="updateCurrentLanguage"
                 @disableLanguage="toggleLanguageDisable" 
-                @changeLanguageName="onChangeLanguageName"
+                @saveChangesLanguageName="onSaveChangesLanguageName"
                 @showModal="showModal"
                 @setSelectedEditQuestion="setSelectedEditQuestion"
                 @deleteQuestion="deleteQuestion"
@@ -190,7 +190,8 @@ export default {
 
         },
         // change language name
-        onChangeLanguageName(index, value) {
+        onSaveChangesLanguageName(index, value) {
+            console.log('changed lang name');
             this.formTranslations[index].language_name = value;
             this.ifEdit = true; // Set edit flag
 
@@ -379,7 +380,7 @@ export default {
             console.log('items on save:', this.formQuestions, this.currentForm);
 
 
-
+            this.isLoading=true;
 
 
             const response = axios.post('/savechangesonform', {
@@ -412,6 +413,8 @@ export default {
 
                     this.showAlert('error', 'Error While save changes'.response.data.message);
                 });
+
+            this.isLoading=false;
 
         },
 

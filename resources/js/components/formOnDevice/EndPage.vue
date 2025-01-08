@@ -29,7 +29,8 @@
         mounted() {
         // Set a timeout to refresh the page after 30 minutes (1,800,000 milliseconds)
         setTimeout(() => {
-            window.location.reload(); // Refresh the page
+            console.log('srart time out to reset step');
+           this.$emit('resetstep');
         }, 5000); // 5 Seconds
     },
     

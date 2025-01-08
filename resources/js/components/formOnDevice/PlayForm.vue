@@ -5,7 +5,8 @@
         <QuestionsTemplate v-else-if="currentStep == 2" @finish="finishForm" :currentTranslation="response.translation"
             :questions="form.questions" @cancel="cancelForm" />
         <UploadingResponse v-if="currentStep == 3" />
-        <EndPage v-if="currentStep == 4" @startform="startForm" :currentTranslation="response.translation" />
+        <EndPage @resetstep="resetStep()" v-if="currentStep == 4" @startform="startForm" 
+        :currentTranslation="response.translation" />
     </div>
 
     <div>
@@ -80,12 +81,17 @@ export default {
     },
     methods: {
         startForm(translation) {
+            this.playSound('Start');
             this.response.translation = translation;
             this.currentStep = 2;
-            this.playSound('Start');
             this.$emit('updateCurrentStep', this.currentStep);
             console.log(this.response, this.currentStep);
 
+        },
+        // reset step
+        resetStep(){
+            console.log('reset step now');
+            this.currentStep=1;
         },
         cancelForm(){
             this.currentStep = 1;
@@ -110,8 +116,9 @@ export default {
                         .then(response => {
                             if (response.status === 200) {
                                 // If the response status is 200, move to the next step
-                                this.currentStep = 4;
                                 this.playSound('Success');
+                                this.currentStep = 4;
+                                
                             }
                             // may be the subscription for user was expired then refresh form to update the status of device
                             else if(response.status === 403)

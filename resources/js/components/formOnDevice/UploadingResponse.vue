@@ -23,9 +23,7 @@
         
         mounted() {
         // Set a timeout to refresh the page after 30 minutes (1,800,000 milliseconds)
-        setTimeout(() => {
-            window.location.reload(); // Refresh the page
-        }, 5000); // 5 Seconds
+        
     },
     
     

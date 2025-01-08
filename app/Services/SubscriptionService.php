@@ -49,8 +49,11 @@ class SubscriptionService
                     [
                         'price' => $priceId,
                         'quantity' => 1,
+                        'tax_rates' => ['txr_1QeczZGQbUDp00t0KH3ixFQ5'], // Replace with your Tax Rate IDs
+
                     ],
                 ],
+                
                 'mode' => 'subscription',
                 'customer' => Auth::user()->stripe_id,
                 
@@ -61,7 +64,7 @@ class SubscriptionService
             return response()->json(['url' => $session->url]); 
             
         } catch (\Throwable $th) {
-            return response()->json(['error' => 'Failed to process payment and create session: ' . $e->getMessage()], 500);
+            return response()->json(['error' => 'Failed to process payment and create session: ' . $th->getMessage()], 500);
 
         }
     

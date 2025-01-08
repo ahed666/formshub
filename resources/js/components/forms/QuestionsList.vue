@@ -135,7 +135,8 @@ export default {
             this.$emit('disableLanguage', langCode);
         },
         onChangeLanguageName(index, value) {
-            this.$emit('onChangeLanguageName', index, value);
+            console.log('onChangeLanguageName');
+            this.$emit('saveChangesLanguageName', index, value);
         },
         showModal(type) {
             this.$emit('showModal',type);

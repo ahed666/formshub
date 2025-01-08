@@ -78,6 +78,7 @@ export default {
 
         },
         saveLanguageName() {
+            console.log('save lang name');
             this.formTranslations[this.languageNameEditingIndex].language_name = this.languageNameEditingText;
             this.$emit('changeLanguageName', this.languageNameEditingIndex, this.languageNameEditingText);
             this.languageNameEditingIndex = null;

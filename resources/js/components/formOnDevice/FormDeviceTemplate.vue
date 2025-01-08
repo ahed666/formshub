@@ -382,7 +382,7 @@ import StandBy from './StandBy.vue';
       else{
         this.currentStep=0;
         this.error=true;
-        this.errorMessage="This Form do not have an questions";
+        this.errorMessage="The form does not have any questions";
       }
     },
 
