@@ -292,7 +292,7 @@ export default {
             }
             // Create a new question object
             const newQuestion = {
-                id: `new-${this.newAnswersCount}`,
+                id: `new-${this.newAnswersCount++}`,
                 order: this.formQuestions.length + 1,
                 optional: questionOptional,
                 questionType: type,
@@ -304,7 +304,7 @@ export default {
                 answers: [] // Initialize answers for different languages
             };
             
-
+           
             // Add answers and their translations
             answers.forEach((answer, index) => {
                 const newAnswer = this.createAnswerObject(answer, index, newQuestion.id);
@@ -350,6 +350,7 @@ export default {
         // after edit question 
         editQuestion(props) {
             const {question}=props;
+            console.log(props,this.formQuestions);
             console.log('edit the question:', question);
             this.formQuestions = this.formQuestions.map(q =>
                 q.id === question.id ? question : q
