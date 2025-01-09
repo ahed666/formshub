@@ -3,7 +3,7 @@
         <div :class="['grid grid-cols-12  w-full gap-1 mb-1']">
             <template v-for="(row, rowIndex) in displayedKeys" :key="rowIndex">
 
-                <div v-for="(key, index) in row" :key="index" class="border border-gray-300 rounded-lg p-[6px] text-center
+                <div v-for="(key, index) in row" :key="index" class="h-10 w-11 min-w-[44px] max-w-max border border-gray-300 rounded-lg p-[6px] text-center
                      cursor-pointer bg-white hover:bg-blue-100 transition" @click="handleKeyClick(key)">
                     {{ key }}
                 </div>

@@ -1,7 +1,9 @@
 <template>
    
    <div>
-
+    <div class="my-1 min-h-5 flex justify-center items-center">
+      <span v-if="phoneError" class="text-red-600 text-sm">{{ phoneError }}</span>
+    </div>
    
     <div class="space-x-2 flex mb-2 items-center">
       <select
@@ -25,8 +27,8 @@
         } ,'border rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 mt-1 w-3/5 p-2']"
         placeholder="Enter your phone number"
       />
-      <span v-if="phoneError" class="text-red-600 text-sm">{{ phoneError }}</span>
     </div>
+    
     <NumberKeyboard  :enable="enableNumberKeyboard"  @key-press="addToInput" @backspace="removeLastCharacter"
      />
 
@@ -83,10 +85,15 @@ import NumberKeyboard from './NumberKeyboard.vue';
         },
 
       validatePhoneNumber() {
+        console.log('make edit on phone number ');
+        console.log(this.inputText,typeof this.inputText,this.inputText.length);
         this.phoneError = '';
         
-        if (!this.inputText) {
+        if (!this.inputText||this.inputText.length==0) {
+        console.log('error');
           this.phoneError = 'Phone number is required';
+          this.$emit('update:error');
+
         } else {
           const phoneNumber = parsePhoneNumber(this.inputText, this.selectedCountryCode.code);
           

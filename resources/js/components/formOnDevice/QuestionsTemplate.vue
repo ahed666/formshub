@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col h-screen">
-        <InactivityWarning />
+        <InactivityWarning @resetstep="callResetStep()" />
         <!-- Render QuestionText component if currentQuestion and translation exist -->
         <!-- <transition name="fade" mode="out-in"> -->
         <QuestionText  :class="['h-2/6',{'animate-slide-out':back,'animate-slide-in':next}]"  if="currentQuestion && getCurrentQuestionText()"
@@ -59,6 +59,11 @@ export default {
         console.log(this.currentQuestion);
     },
     methods: {
+
+        // call resetstep()
+        callResetStep(){
+                this.$emit('resetstep');
+        },
         getCurrentQuestionText() {
             if (!this.currentQuestion || !this.currentQuestion.translations) {
                 return null;

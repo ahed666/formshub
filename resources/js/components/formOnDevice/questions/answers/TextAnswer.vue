@@ -8,15 +8,17 @@
         </div>
 
         <div v-else class="p-2 w-full">
-
+            <div class="my-1 min-h-5 flex justify-center items-center">
+            <span v-if="error" class="text-red-600 text-sm">{{ error }}</span>
+            </div>
             <!-- Fallback for other input types -->
             <div  class="grid  items-center mb-2">
-                <h1 v-if="error" class="text-primary_red text-xs text-center">{{ error }}</h1>
 
                 <input ref="textInput" id="textinput" name="textinput"
                  type="text" v-model="inputText" placeholder="Type here..."
                     class="border border-gray-300 p-2 w-full " />
             </div>
+            
 
             <!-- keyboard -->
             <TextKeyboard :questionType="questionType.type_text" @key-press="addToInput" @backspace="removeLastCharacter"

@@ -58,7 +58,7 @@ export default {
 
         // After the countdown (2 minutes), give an additional 30 seconds before refreshing
         this.warningTimeout = setTimeout(() => {
-          window.location.reload(); // Refresh the page after 30 seconds of no interaction
+          this.$emit('resetstep');
         }, this.refreshDelay); // 30 seconds after the initial 2 minutes countdown
       }, this.warningDelay); // Initial inactivity delay (2 minutes)
     },
