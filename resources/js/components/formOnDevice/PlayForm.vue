@@ -2,7 +2,7 @@
     <div v-if="form != null">
         <SubmitError v-if="error == true" :message="errorMessage" />
         <StartPage v-if="currentStep == 1" @startform="startForm" :formTranslations="form.translations" />
-        <QuestionsTemplate v-else-if="currentStep == 2" @resetstep="resetstep()" @finish="finishForm" :currentTranslation="response.translation"
+        <QuestionsTemplate v-else-if="currentStep == 2" @resetstep="resetStep()" @finish="finishForm" :currentTranslation="response.translation"
             :questions="form.questions" @cancel="cancelForm" />
         <UploadingResponse v-if="currentStep == 3" />
         <EndPage @resetstep="resetStep()" v-if="currentStep == 4" @startform="startForm" 
