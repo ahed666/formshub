@@ -10,7 +10,7 @@
             </tr>
             </thead>
         </table>
-            <div class="overflow-y-auto" style="max-height: 150px;"> <!-- Set your max-height here -->
+            <div class="overflow-y-auto" style="max-height: 300px;"> <!-- Set your max-height here -->
             <table class="min-w-full border-t border-gray-200">
             <tbody>
                 <tr v-for="(answer,index) in answers" :key="index" class="hover:bg-gray-50">

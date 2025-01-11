@@ -7,7 +7,7 @@
         <h1>{{ translations.titles.forms_title }}</h1>
         <div class="grid grid-cols-12 md:gap-2 xs:gap-1">
             <!-- template for each form -->
-            <div class="md:col-span-4 xs:col-span-12 w-full bg-white   md:p-4 xs:p-2 border rounded" v-for="form in currentForms"
+            <div class="md:col-span-4 xs:col-span-12 w-full bg-white   md:p-4 xs:p-2  border-secondary_blue border-[1px]  rounded-[0.5rem]" v-for="form in currentForms"
                 :key="form.id">
 
                 <FormCard class="grid" :form="form" />
