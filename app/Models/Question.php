@@ -10,7 +10,9 @@ class Question extends Model
     use HasFactory;
     protected $fillable = ['form_id', 'type_id', 'answers_view_mode','question_text','order', 'optional','with_answers'];
 
-    
+    protected $casts = [
+        'optional' => 'boolean',
+    ];
 
     public function form()
     {

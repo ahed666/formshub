@@ -71,7 +71,16 @@ class FormService
 
     protected function uploadFormLogo($form, $file)
     {
-        $formFolderPath = 'user-' . $form->user_id . '/forms/' . $form->slug;
+        $formFolderPath = 'user-' . $form->user_id . '/forms/' . $form->slug.'/logo';
+        if (!empty($form->logo)) {
+            // Extract the storage path from the full URL
+            $existingFilePath = str_replace(env('APP_URL') . '/storage/', '', $form->logo);
+    
+            // Delete the file if it exists in the storage
+            if (\Storage::disk('public')->exists($existingFilePath)) {
+                \Storage::disk('public')->delete($existingFilePath);
+            }
+        }
         $sub_path = $file->store($formFolderPath, 'public');
         $form->logo = env('APP_URL') . '/storage/' . $sub_path;
         $form->save();
@@ -91,8 +100,17 @@ class FormService
 
     public function updateForm($request)
     {
+       
         $form = Form::find($request->form['id']);
-        $form->update(['name' => $request->form['name'], 'logo' => $request->form['logo']]);
+        if($request->hasFile('form.logo')&&$request->file('form.logo')->isValid()){
+            $this->uploadFormLogo($form, $request->form['logo']);
+            $form->update(['name' => $request->form['name']]);
+
+        }
+        elseif(is_string($request->form['logo'])){
+            $form->update(['name' => $request->form['name'],'logo'=>$request->form['logo']]);
+
+        }
 
         app(TranslationService::class)->updateFormTranslations($request->formTranslations, $form);
         app(QuestionService::class)->updateFormQuestions($request->formQuestions, $form->id);

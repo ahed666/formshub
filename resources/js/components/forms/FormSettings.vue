@@ -49,6 +49,7 @@ import FormLogo from './FormLogo.vue';
             this.$emit('editFormName', newName);
         },
         onImageSelected(imageFile) {
+            console.log('changing logo form');
             this.$emit('onImageSelected', imageFile);
 
         }

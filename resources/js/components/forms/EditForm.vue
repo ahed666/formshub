@@ -171,7 +171,9 @@ export default {
         },
         // Handle image selection
         onImageSelected(imageFile) {
+            
             this.currentForm.logo = imageFile;  // Store the selected image file
+            this.ifEdit = true;
         },
 
         //  formTranslations methods
