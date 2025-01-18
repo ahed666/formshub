@@ -77,8 +77,11 @@ class FormService
             $existingFilePath = str_replace(env('APP_URL') . '/storage/', '', $form->logo);
     
             // Delete the file if it exists in the storage
-            if (\Storage::disk('public')->exists($existingFilePath)) {
-                \Storage::disk('public')->delete($existingFilePath);
+            if (!str_contains($existingFilePath, 'default-form-logo')) {
+                // Delete the file if it exists in the storage
+                if (\Storage::disk('public')->exists($existingFilePath)) {
+                    \Storage::disk('public')->delete($existingFilePath);
+                }
             }
         }
         $sub_path = $file->store($formFolderPath, 'public');
