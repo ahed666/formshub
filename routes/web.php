@@ -13,8 +13,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StripeWebhookController;
 use App\Http\Controllers\LocaleController;
 use Illuminate\Support\Facades\App;
-
+use Laravel\Fortify\Http\Controllers\EmailVerificationPromptController;
 use App\Events\FormUpdated;
+use Laravel\Fortify\RoutePath;
+
 Route::get('/', function () {
     return view('welcome');
 });

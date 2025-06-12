@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\DB;
 use Laravel\Cashier\Billable;
 // implements MustVerifyEmail
 
-class User extends Authenticatable
+class User extends Authenticatable implements  MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
