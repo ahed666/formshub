@@ -123,13 +123,13 @@ class QuestionsTypesSeeder extends Seeder
                 
                 [
                   'category_id' => 6,
-                'type_text' => 'drawing',
-                'question_type_details' => 'Signature',
-                'image' => env('APP_URL').'/images/questions_types/English/Drawing.png',
-                'question_type_details_ar' => 'توقيع',
-               
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                    'type_text' => 'drawing',
+                    'question_type_details' => 'Signature',
+                    'image' => env('APP_URL').'/images/questions_types/English/Drawing.png',
+                    'question_type_details_ar' => 'توقيع',
+                
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ]
                 ]);
     

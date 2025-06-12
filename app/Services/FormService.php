@@ -53,7 +53,7 @@ class FormService
     {
      
        
-        if ($form->user_id !== $userId) {
+        if ($form->user_id != $userId) {
             abort(403, 'Unauthorized action.');
         }
     }

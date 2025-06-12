@@ -7,7 +7,7 @@
 
             </div>
 
-            <QuestionText class="my-4" :questionText="getCurrentQuestionText()" />
+            <QuestionText class="my-4" :questionText="getQuestionText(currentQuestion)" />
 
             <div
                 class=" md:w-2/3 xs:w-full mt-2 flex md:flex-nowrap xs:flex-wrap md:space-y-0
@@ -105,7 +105,7 @@ export default {
 
     mounted() {
         this.detectedStartAndEndDateForResponses();
-        this.initalData();
+        this.initialData();
     },
 
     methods: {
@@ -144,18 +144,17 @@ export default {
 
         getExportData(){
             if(this.checkTextQuestions() === false)
-            return {'textQuestion':false,'question':this.getCurrentQuestionText(),'statisticsData':this.allAnswers};
+            return {'textQuestion':false,'question':this.getQuestionText(this.currentQuestion),'statisticsData':this.allAnswers};
             else
-            return {'textQuestion':true,'question':this.getCurrentQuestionText(),'statisticsData':this.allTextAnswers};
+            return {'textQuestion':true,'question':this.getQuestionText(this.currentQuestion),'statisticsData':this.allTextAnswers};
 
 
         },
 
         // get current question text
-        getCurrentQuestionText() {
+        getQuestionText(question) {
 
-            var translation = this.currentQuestion.translations.filter(trnas => trnas.language == this.currentLang)[0];
-            console.log('translation:', translation, this.currentQuestion.translations);
+            var translation = question.translations.filter(trnas => trnas.language == this.currentLang)[0];
             return translation.question_text;
 
         },
@@ -167,7 +166,7 @@ export default {
 
             console.log('set:', question);
             this.currentQuestion = question;
-            this.initalData();
+            this.initialData();
         },
 
         checkTextQuestions() {
@@ -176,13 +175,13 @@ export default {
         },
 
 
-        initalData() {
-            console.log('inital data', this.responses);
+        initialData() {
+            
 
-            this.filterResponsesForCurrentQuestion();
+            this.filteredResponses=await  this.filterResponsesForCurrentQuestion(this.currentQuestion,this.startDate,this.endDate);
             this.calculateSkips();
             this.calculateAnswersOnResponse();
-            this.checkTextQuestions() ? this.textAnswersWithPercent() : this.answersWithPercent();
+            this.checkTextQuestions() ? this.allTextAnswers=this.textAnswersWithPercent(this.filteredResponses) : this.nonTextAnswersWithPercent();
         },
 
         formatDateInTimezone(dateString, timezone = 'Asia/Dubai') {
@@ -202,7 +201,7 @@ export default {
 
         },
         applyDateFilter() {
-            this.initalData();
+            this.initialData();
         },
 
 
@@ -217,20 +216,19 @@ export default {
 
 
         // filterd responses for current question
-        filterResponsesForCurrentQuestion() {
+        async  filterResponsesForCurrentQuestion(question,start,end) {
             // Format the start and end dates to 'YYYY-MM-DD'
-            const start = this.startDate;
-            const end = this.endDate;
+         
 
 
-            this.filteredResponses = this.responses.flatMap(response => {
+            var fResponses = this.responses.flatMap(response => {
                 // Format each response date to 'YYYY-MM-DD'
                 console.log('before:', response.created_at);
                 const responseDate = response.created_at.split(" ")[0];
                 console.log('after:', responseDate);
                 return response.question_responses.map(qr => {
                     // Only include if question_id matches and within the date range
-                    if (qr.question_id === this.currentQuestion.id &&
+                    if (qr.question_id === question.id &&
                         responseDate >= start && responseDate <= end) {
                         // Set created_at of question_response to match the parent's created_at
                         qr.created_at = response.created_at; // Copy created_at from response
@@ -240,7 +238,7 @@ export default {
                 }).filter(qr => qr !== null); // Filter out null values
             });
 
-
+            return fResponses;
 
 
         },
@@ -272,39 +270,47 @@ export default {
         },
 
         // get all answers for question of Non text type with it perecent
-        answersWithPercent() {
-            this.allAnswersWithSums = [];
+        nonTextAnswersWithPercent(){
+            this.allAnswersWithSums=await this.calcAnswersWithSums();
+            this.allAnswers=await this.calAllanswers(this.allAnswersWithSums,this.currentQuestion.answers);
+            this.calculateChartData();
+        },
+
+       async calcAnswersWithSums() {
+            answersWithSums = [];
             // Count occurrences of each answer ID
             
            
             this.filteredResponses.forEach(({ answer_id }) => {
                 if (answer_id) {
                     console.log(answer_id);
-                    this.allAnswersWithSums[answer_id] =
-                        (this.allAnswersWithSums[answer_id] || 0) + 1;
+                    answersWithSums[answer_id] =
+                        (aAnswersWithSums[answer_id] || 0) + 1;
                 }
             });
 
-            this.calAllanswers();
+            return answersWithSums;
 
-            this.calculateChartData();
+            
 
         },
 
         // initial answers pre difened for view it in table
-        calAllanswers(){
-            var total=this.allAnswersWithSums.reduce((sum,item)=>{
+        async calAllanswers(answersWithSums,questionAnswers){
+            var total=answersWithSums.reduce((sum,item)=>{
                 return sum+=item;
             },0);
-            this.allAnswers=[];
-            this.currentQuestion.answers.forEach(answer => {
-                this.allAnswers.push({
+          var answers=[];
+           questionAnswers.forEach(answer => {
+                answers.push({
                     text: this.getAnswerText(answer),
-                    total: this.allAnswersWithSums[answer.id]?this.allAnswersWithSums[answer.id]:0,
-                    percent:this.calculatePercent(this.allAnswersWithSums[answer.id],total),
+                    total: answersWithSums[answer.id]?answersWithSums[answer.id]:0,
+                    percent:this.calculatePercent(answersWithSums[answer.id],total),
                 });
                 
             });
+
+            return answers;
         },
 
         // initial data for chart 
@@ -324,16 +330,17 @@ export default {
         },
 
         // get all answers for question of text type with it perecent
-        textAnswersWithPercent() {
-            this.allTextAnswers = [];
-            this.filteredResponses.forEach((response, index) => {
-                this.allTextAnswers.push({
+        textAnswersWithPercent(fResponses) {
+            Answers = [];
+            fResponses.forEach((response, index) => {
+               Answers.push({
                     text: response.text_response,
                     date: response.created_at,
                     skip: response.skip,
                     textType: this.currentQuestion.type.type_text,
                 });
             });
+            return Answers;
 
         }
 
