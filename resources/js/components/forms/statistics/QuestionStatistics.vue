@@ -171,7 +171,6 @@ export default {
         },
 
         checkTextQuestions() {
-           console.log('current question',this.currentQuestion.type,this.currentQuestion.type.category_id);
             return [4, 5, 6].includes(Number(this.currentQuestion.type.category_id));
         },
 
@@ -182,7 +181,6 @@ export default {
             this.filteredResponses=await  this.filterResponsesForCurrentQuestion(this.currentQuestion,this.startDate,this.endDate);
             this.calculateSkips();
             this.calculateAnswersOnResponse();
-            console.log('question type:',typeof this.checkTextQuestions(),this.checkTextQuestions());
             this.checkTextQuestions() ? this.allTextAnswers=this.textAnswersWithPercent(this.filteredResponses) : this.nonTextAnswersWithPercent();
         },
 
@@ -279,7 +277,6 @@ export default {
         // get all answers for question of Non text type with it perecent
        async nonTextAnswersWithPercent(){
             this.allAnswersWithSums=await this.calcAnswersWithSums();
-            console.log('non text answers function',this.allAnswersWithSums,this.currentQuestion.answers);
             this.allAnswers=await this.calAllanswers(this.allAnswersWithSums,this.currentQuestion.answers);
             this.calculateChartData();
         },
@@ -288,16 +285,15 @@ export default {
             let  answersWithSums = [];
             // Count occurrences of each answer ID
             
-            console.log('this.filteredResponses',this.filteredResponses);
+            
             this.filteredResponses.forEach(({ answer_id,text_response }) => {
-                console.log('answer_id:',answer_id,text_response);
+                
                 if (answer_id||text_response) {
                     
                     answersWithSums[answer_id] =
                         (answersWithSums[answer_id] || 0) + 1;
                 }
             });
-                 console.log('calcAnswersWithSums:',answersWithSums);
             return answersWithSums;
 
             
@@ -318,7 +314,6 @@ export default {
                 });
                 
             });
-            console.log('answers:',answers,questionAnswers);
             return answers;
         },
 
@@ -340,7 +335,6 @@ export default {
 
         // get all answers for question of text type with it perecent
         textAnswersWithPercent(fResponses) {
-                                   console.log('textAnswersWithPercent:',fResponses);
 
            let Answers = [];
             fResponses.forEach((response, index) => {

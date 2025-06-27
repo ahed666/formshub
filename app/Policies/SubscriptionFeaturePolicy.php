@@ -4,7 +4,10 @@ namespace App\Policies;
 
 use App\Models\User;
 use App\Models\Plan;
-use Laravel\Cashier\Subscription;
+// use Laravel\Cashier\Subscription;
+use Stripe\Subscription;
+
+ use Stripe\Stripe;
 use Illuminate\Support\Facades\Auth;
 class SubscriptionFeaturePolicy
 {
@@ -13,8 +16,24 @@ class SubscriptionFeaturePolicy
      */
     public function __construct()
     {
-        //
+                Stripe::setApiKey(config('services.stripe.secret'));
+
     }
+    private function getStripeLatestSubscription($user)
+    {
+        if (!$user || !$user->stripe_id) {
+            return null;
+        }
+
+
+        $subscriptions = Subscription::all([
+            'customer' => $user->stripe_id,
+            'status' => 'all', // optional: 'active', 'trialing'...
+            'limit' => 1,
+        ]);
+
+        return $subscriptions->data[0] ?? null;
+}
 
     public function canAdd($type,$user)
     {
@@ -24,15 +43,15 @@ class SubscriptionFeaturePolicy
         return false;
         
         // Fetch the user's active subscription and its feature limits
-        $userSubscription = $user->subscriptions()->whereIn('stripe_status', ['active','trialing'])->first();
+        $userSubscription = $this->getStripeLatestSubscription($user);
         
-        if (!$userSubscription) {
+        if (!$userSubscription||!in_array($userSubscription->status, ['active', 'trialing'])) {
             $url=route('subscriptions.index');
             return response()->json(['result' => false,'resultmessage'=>"Your subscription is not active,visit <a class=\"text-secondary_blue\" href=\"$url\">Subscriptions</a> to renew"]);
 
         }
         
-        $metaFeatures=Plan::where('stripe_price_id',$userSubscription->stripe_price)->first()->meta_features;
+        $metaFeatures = Plan::where('stripe_price_id', $userSubscription->items->data[0]->price->id)->first()->meta_features;
         if (!$metaFeatures) {
             return response()->json(['result' => false,'resultmessage'=>'There is error while process your request']);
 
