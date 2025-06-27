@@ -229,10 +229,12 @@ export default {
                 console.log('response data:',responseDate);
                 return response.question_responses.map(qr => {
                     // Only include if question_id matches and within the date range
-                    
+                      console.log('inside:',responseDate,start,end,qr.question_id ,question.id);
+                    console.log('inside1:',typeof responseDate,typeof start,typeof end,typeof qr.question_id ,typeof question.id);
+                       
                     if (qr.question_id === question.id &&
                         responseDate >= start && responseDate <= end) {
-                            console.log('inside:',responseDate,start,end);
+                          
                         // Set created_at of question_response to match the parent's created_at
                         qr.created_at = response.created_at; // Copy created_at from response
                         return qr; // Return the modified question response
