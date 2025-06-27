@@ -238,7 +238,7 @@ export default {
                     return null; // Return null if it does not match, will be filtered out later
                 }).filter(qr => qr !== null); // Filter out null values
             });
-            
+            console.log('fResponses:',fResponses);
             return fResponses;
 
 
