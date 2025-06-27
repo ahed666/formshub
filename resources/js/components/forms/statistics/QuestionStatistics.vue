@@ -290,7 +290,7 @@ export default {
             let  answersWithSums = [];
             // Count occurrences of each answer ID
             
-
+            console.log('this.filteredResponses',this.filteredResponses);
             this.filteredResponses.forEach(({ answer_id }) => {
                 console.log('answer_id:',answer_id);
                 if (answer_id) {
