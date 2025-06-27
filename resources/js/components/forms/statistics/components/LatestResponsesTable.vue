@@ -26,6 +26,7 @@
     
   
       <!-- Wrapper for scrollable table body -->
+       length:{{responses.length}}
       <div v-if="responses.length > 0" class="overflow-x-auto overflow-y-auto md:block xs:grid xs:gap-1" style="max-height: 250px;">
         <table class="min-w-full border-t border-gray-200 text-sm md:inline-table xs:hidden">
             <tbody>
@@ -96,6 +97,7 @@ import InfoLine from './InfoLine.vue';
             },
         },
         mounted(){
+          console.log(responses)
         },
 
         data(){
