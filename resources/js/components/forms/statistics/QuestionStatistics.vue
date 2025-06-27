@@ -257,12 +257,9 @@ export default {
 
         // calculate num of skips 
         calculateSkips() {
-            this.totalSkips = 0;
-            this.filteredResponses.forEach(questionResponse => {
-                if (questionResponse.skip) {
-                    this.totalSkips++;
-                }
-            });
+            this.totalSkips = this.filteredResponses.reduce((count, response) => {
+                return count + (Number(response.skip) === 1 ? 1 : 0);
+            }, 0);
         },
 
         // calculate num of answers on this response for currentquestion
