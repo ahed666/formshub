@@ -291,9 +291,9 @@ export default {
             // Count occurrences of each answer ID
             
             console.log('this.filteredResponses',this.filteredResponses);
-            this.filteredResponses.forEach(({ answer_id }) => {
+            this.filteredResponses.forEach(({ answer_id,text_response }) => {
                 console.log('answer_id:',answer_id);
-                if (answer_id) {
+                if (answer_id||text_response!='') {
                     
                     answersWithSums[answer_id] =
                         (answersWithSums[answer_id] || 0) + 1;
