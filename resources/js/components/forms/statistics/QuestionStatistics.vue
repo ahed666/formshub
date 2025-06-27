@@ -172,7 +172,7 @@ export default {
 
         checkTextQuestions() {
            console.log('current question',this.currentQuestion.type,this.currentQuestion.type.category_id);
-            return [4, 5, 6].includes(this.currentQuestion.type.category_id);
+            return [4, 5, 6].includes(Number(this.currentQuestion.type.category_id));
         },
 
 
