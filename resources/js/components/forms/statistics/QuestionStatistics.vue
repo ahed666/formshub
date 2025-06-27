@@ -282,7 +282,7 @@ export default {
             let  answersWithSums = [];
             // Count occurrences of each answer ID
             
-                       console.log('calcAnswersWithSums:',filteredResponses);
+                       console.log('calcAnswersWithSums:',this.filteredResponses);
 
             this.filteredResponses.forEach(({ answer_id }) => {
                 if (answer_id) {
