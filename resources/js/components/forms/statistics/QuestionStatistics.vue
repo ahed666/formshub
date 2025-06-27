@@ -175,7 +175,7 @@ export default {
         },
 
 
-        initialData() {
+       async initialData() {
             
 
             this.filteredResponses=await  this.filterResponsesForCurrentQuestion(this.currentQuestion,this.startDate,this.endDate);
@@ -270,7 +270,7 @@ export default {
         },
 
         // get all answers for question of Non text type with it perecent
-        nonTextAnswersWithPercent(){
+       async nonTextAnswersWithPercent(){
             this.allAnswersWithSums=await this.calcAnswersWithSums();
             this.allAnswers=await this.calAllanswers(this.allAnswersWithSums,this.currentQuestion.answers);
             this.calculateChartData();

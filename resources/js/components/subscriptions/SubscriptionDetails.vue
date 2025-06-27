@@ -132,6 +132,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
           // window.location.href = response.data.url;
         } catch (error) {
+          console.log(error);
           this.showAlert('error', this.translations.subscriptions.error_while_payment,error);
         }finally{
           this.loading = false;

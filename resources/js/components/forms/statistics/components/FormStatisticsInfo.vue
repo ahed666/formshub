@@ -41,7 +41,7 @@ import { StatisticsMixin } from '../../../mixins/StatisticsMixin';
                 var CompletionAvg=this.responses.reduce((sumAvg,response)=>{
                     return sumAvg+=response.completion_avg;
                 },0);
-
+                console.log(CompletionAvg,this.responses.length);
                 return (CompletionAvg/this.responses.length).toFixed(2);
             }
         },
