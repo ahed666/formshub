@@ -15,8 +15,9 @@ export const StatisticsMixin = {
             console.log('formDatetime',datetime);
             return datetime.replace('T', ' ').slice(0, 19);
         },
-        formatNumber(number,fixed){
-                    return number.toFixed(fixed);
+            formatNumber(number, fixed) {
+            const num = Number(number);
+            return isNaN(num) ? '0.00' : num.toFixed(fixed);
         },
         calculateAge(birthDateString) {
             const birthDate = new Date(birthDateString);
