@@ -221,16 +221,18 @@ export default {
             // Format the start and end dates to 'YYYY-MM-DD'
          
                 console.log('filterResponsesForCurrentQuestion:',question,this.responses,start,end);
-
-            var fResponses = this.responses.flatMap(response => {
+            let fResponses=[];
+             fResponses = this.responses.flatMap(response => {
                 // Format each response date to 'YYYY-MM-DD'
                 
                 const responseDate = response.created_at.split(" ")[0];
                 console.log('response data:',responseDate);
                 return response.question_responses.map(qr => {
                     // Only include if question_id matches and within the date range
+                    console.log('inside:',qr.question_id , question.id);
                     if (qr.question_id === question.id &&
                         responseDate >= start && responseDate <= end) {
+                            
                         // Set created_at of question_response to match the parent's created_at
                         qr.created_at = response.created_at; // Copy created_at from response
                         return qr; // Return the modified question response
