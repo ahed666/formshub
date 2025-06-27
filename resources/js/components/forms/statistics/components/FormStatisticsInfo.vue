@@ -38,11 +38,13 @@ import { StatisticsMixin } from '../../../mixins/StatisticsMixin';
         },
         methods:{
             calculateCompletionAvg(){
-                var CompletionAvg=this.responses.reduce((sumAvg,response)=>{
-                    return sumAvg+=response.completion_avg;
-                },0);
-                console.log('info:',CompletionAvg,this.responses.length);
-                return (CompletionAvg/this.responses.length).toFixed(2);
+                if (!this.responses.length) return '0.00';
+
+                const total = this.responses.reduce((sum, response) => {
+                    return sum + parseFloat(response.completion_avg || 0);
+                }, 0);
+
+                return (total / this.responses.length).toFixed(2);
             }
         },
         
