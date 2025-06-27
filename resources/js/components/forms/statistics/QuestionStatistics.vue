@@ -292,6 +292,7 @@ export default {
             
 
             this.filteredResponses.forEach(({ answer_id }) => {
+                console.log('answer_id:',answer_id);
                 if (answer_id) {
                     
                     answersWithSums[answer_id] =
