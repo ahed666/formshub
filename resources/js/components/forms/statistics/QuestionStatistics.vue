@@ -220,7 +220,7 @@ export default {
         async  filterResponsesForCurrentQuestion(question,start,end) {
             // Format the start and end dates to 'YYYY-MM-DD'
          
-                console.log('filterResponsesForCurrentQuestion:',question,start,end);
+                console.log('filterResponsesForCurrentQuestion:',question,this.responses,start,end);
 
             var fResponses = this.responses.flatMap(response => {
                 // Format each response date to 'YYYY-MM-DD'
