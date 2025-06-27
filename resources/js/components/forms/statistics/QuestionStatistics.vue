@@ -273,6 +273,7 @@ export default {
         // get all answers for question of Non text type with it perecent
        async nonTextAnswersWithPercent(){
             this.allAnswersWithSums=await this.calcAnswersWithSums();
+            console.log('non text answers function',this.allAnswersWithSums,this.currentQuestion.answers);
             this.allAnswers=await this.calAllanswers(this.allAnswersWithSums,this.currentQuestion.answers);
             this.calculateChartData();
         },
