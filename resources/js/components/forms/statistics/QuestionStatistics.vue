@@ -182,6 +182,7 @@ export default {
             this.filteredResponses=await  this.filterResponsesForCurrentQuestion(this.currentQuestion,this.startDate,this.endDate);
             this.calculateSkips();
             this.calculateAnswersOnResponse();
+            console.log('question type:',typeof this.checkTextQuestions(),this.checkTextQuestions());
             this.checkTextQuestions() ? this.allTextAnswers=this.textAnswersWithPercent(this.filteredResponses) : this.nonTextAnswersWithPercent();
         },
 
