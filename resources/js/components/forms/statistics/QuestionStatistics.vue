@@ -310,7 +310,7 @@ export default {
                 });
                 
             });
-            console.log('answers:',answers);
+            console.log('answers:',answers,questionAnswers);
             return answers;
         },
 
