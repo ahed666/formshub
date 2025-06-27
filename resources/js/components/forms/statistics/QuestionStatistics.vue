@@ -277,7 +277,7 @@ export default {
         },
 
        async calcAnswersWithSums() {
-            answersWithSums = [];
+            let  answersWithSums = [];
             // Count occurrences of each answer ID
             
            
@@ -285,7 +285,7 @@ export default {
                 if (answer_id) {
                     
                     answersWithSums[answer_id] =
-                        (aAnswersWithSums[answer_id] || 0) + 1;
+                        (answersWithSums[answer_id] || 0) + 1;
                 }
             });
 
@@ -331,7 +331,7 @@ export default {
 
         // get all answers for question of text type with it perecent
         textAnswersWithPercent(fResponses) {
-            Answers = [];
+           let Answers = [];
             fResponses.forEach((response, index) => {
                Answers.push({
                     text: response.text_response,

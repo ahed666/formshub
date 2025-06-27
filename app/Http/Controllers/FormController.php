@@ -74,7 +74,7 @@ class FormController extends Controller
         $form=$this->formService->getFormDetails($form->id);
         $responses=$this->statisticsService->getResponses($form);
         $latestResponses=$this->statisticsService->getLatestResponses($form);
-        
+         
         
         
        

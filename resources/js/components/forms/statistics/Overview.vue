@@ -15,7 +15,8 @@
                 v-if="legend.length > 0" :legend="legend" :data="chartDataResponsesPerDevices" />
             </div>
             <div class="bg-white rounded-lg xs:col-span-3 md:col-span-2 p-2 ">
-                <LatestResponsesTable class="  " :questionsWithAnswers="form.questions" :responses="latestResponses" />
+               
+                <LatestResponsesTable  class="  " :questionsWithAnswers="form.questions" :responses="latestResponses" />
 
             </div>
            
@@ -82,8 +83,11 @@ export default {
                         // Initialize the device_id property as an object with value and name
                         sumsOnDevices[response.device_id] = {
                             value: 0,
-                            name:response.device_id==null? this.translations.forms.unknown:response.device.name,
-                        };
+                            name: response.device_id == null 
+                                ? this.translations.forms.unknown 
+                                : response.device && response.device.name 
+                                    ? response.device.name 
+                                    : this.translations.forms.unknown                        };
                     }
 
                     // Increment the value for this device
@@ -91,8 +95,9 @@ export default {
                 });
                 
                 this.chartDataResponsesPerDevices=Object.values(sumsOnDevices);
-                this.legend=this.chartDataResponsesPerDevices.map(item => item.name);
-
+                this.legend = this.chartDataResponsesPerDevices.map(item => {
+                return item && item.name ? item.name :this.translations.forms.unknown ;
+                });
 
 
               
