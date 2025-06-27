@@ -89,7 +89,7 @@ export default {
                     // Increment the value for this device
                     sumsOnDevices[response.device_id].value += 1;
                 });
-                console.log(sumsOnDevices);
+                
                 this.chartDataResponsesPerDevices=Object.values(sumsOnDevices);
                 this.legend=this.chartDataResponsesPerDevices.map(item => item.name);
 

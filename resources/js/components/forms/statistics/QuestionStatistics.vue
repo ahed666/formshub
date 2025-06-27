@@ -113,7 +113,7 @@ export default {
         // export question 
        async exportQuestion(){
             this.loading = true;
-            console.log('exporting');
+            
             try {
           const response = await axios.post('/statistics/question/export',{
             
@@ -121,14 +121,14 @@ export default {
           },{
             responseType: 'blob', // This is crucial to handle binary data
         });
-          console.log(response);
+         
           if (response.status === 200) {
            
            this.downloadFile(response.data,'question');
           
         }
         } catch (error) {
-            console.log('error:',error);
+            
           if (error.response && error.response.data) {
             error.response.data.message?this.showAlert('error',error.response.data.message) : this.showAlert('error','An error occurred.');
         } else {
@@ -164,13 +164,13 @@ export default {
         // set current question(initial data for question text)
         setCurrentQuestion(question) {
 
-            console.log('set:', question);
+            
             this.currentQuestion = question;
             this.initialData();
         },
 
         checkTextQuestions() {
-            console.log(this.currentQuestion.type.category_id);
+           
             return [4, 5, 6].includes(this.currentQuestion.type.category_id);
         },
 
@@ -211,7 +211,7 @@ export default {
             dates.sort();
             this.startDate = this.minDate = dates[0];          // The earliest date
             this.endDate = this.maxDate = dates[dates.length - 1];
-            console.log(this.minDate, this.maxDate, dates);
+            
         },
 
 
@@ -223,9 +223,9 @@ export default {
 
             var fResponses = this.responses.flatMap(response => {
                 // Format each response date to 'YYYY-MM-DD'
-                console.log('before:', response.created_at);
+                
                 const responseDate = response.created_at.split(" ")[0];
-                console.log('after:', responseDate);
+                
                 return response.question_responses.map(qr => {
                     // Only include if question_id matches and within the date range
                     if (qr.question_id === question.id &&
@@ -257,7 +257,7 @@ export default {
 
         // calculate num of answers on this response for currentquestion
         calculateAnswersOnResponse() {
-            console.log(this.filteredResponses);
+            
             this.totalAnswers = Object.keys(
                 this.filteredResponses.reduce((acc, response) => {
                     const key = `${response.question_id}-${response.response_id}`;
@@ -283,7 +283,7 @@ export default {
            
             this.filteredResponses.forEach(({ answer_id }) => {
                 if (answer_id) {
-                    console.log(answer_id);
+                    
                     answersWithSums[answer_id] =
                         (aAnswersWithSums[answer_id] || 0) + 1;
                 }
@@ -325,7 +325,7 @@ export default {
             });
 
             this.legend = this.chartData.map(item => item.name);
-            console.log('leg:',this.legend);
+            
 
         },
 
