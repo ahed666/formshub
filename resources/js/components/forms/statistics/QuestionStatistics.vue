@@ -226,7 +226,7 @@ export default {
                 // Format each response date to 'YYYY-MM-DD'
                 
                 const responseDate = response.created_at.split(" ")[0];
-                
+                console.log('response data:',responseDate);
                 return response.question_responses.map(qr => {
                     // Only include if question_id matches and within the date range
                     if (qr.question_id === question.id &&
