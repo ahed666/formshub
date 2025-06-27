@@ -22,6 +22,7 @@
             <div v-if="checkTextQuestions() === false"
                 class="h-auto w-full mt-8  flex md:flex-nowrap flex-wrap md:space-y-0
                  md:space-x-8 xs:space-x-0 rtl:space-x-reverse xs:space-y-4">
+               
                 <AnswersTable :answers="allAnswers" />
                 <Chart 
                 :chartHeight="'md:h-[350px] xs:h-[350px] '"
@@ -309,7 +310,7 @@ export default {
                 });
                 
             });
-
+            console.log('answers:',answers);
             return answers;
         },
 

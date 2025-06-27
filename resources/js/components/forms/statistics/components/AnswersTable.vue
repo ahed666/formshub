@@ -13,6 +13,7 @@
             <div class="overflow-y-auto" style="max-height: 300px;"> <!-- Set your max-height here -->
             <table class="min-w-full border-t border-gray-200">
             <tbody>
+                    
                 <tr v-for="(answer,index) in answers" :key="index" class="hover:bg-gray-50">
           <td class="py-2 px-4 border-b w-1/2 text-left">{{ index+1}}.{{ answer.text }}</td>
           <td class="py-2 px-4 border-b w-1/4 text-center">{{ answer.total }}</td>
@@ -56,16 +57,12 @@
             }
         },
         mounted(){
-            // this.allAnswersWithSums.length>0?this.calculateSumAnswers():'';
 
+           console.log(answers);
         },
         watch:{
 
-        //     allAnswersWithSums:{
-        //     handler(newVal) {
-        //        newVal.length>0?this.calculateSumAnswers():'';
-        //     }
-        // }
+       
          
         },
 
