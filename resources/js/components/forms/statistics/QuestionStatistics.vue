@@ -282,7 +282,8 @@ export default {
             let  answersWithSums = [];
             // Count occurrences of each answer ID
             
-           
+                       console.log('calcAnswersWithSums:',filteredResponses);
+
             this.filteredResponses.forEach(({ answer_id }) => {
                 if (answer_id) {
                     
@@ -333,6 +334,8 @@ export default {
 
         // get all answers for question of text type with it perecent
         textAnswersWithPercent(fResponses) {
+                                   console.log('textAnswersWithPercent:',fResponses);
+
            let Answers = [];
             fResponses.forEach((response, index) => {
                Answers.push({
