@@ -233,8 +233,8 @@ export default {
                 console.log('response data:',responseDate);
                 return response.question_responses.map(qr => {
                     // Only include if question_id matches and within the date range
-                      console.log('inside:',responseDate,start,end,qr.question_id ,question.id);
-                    console.log('inside1:',typeof responseDate,typeof start,typeof end,typeof qr.question_id ,typeof question.id);
+                      console.log('inside:',responseDateObj,startObj,endObj,qr.question_id ,question.id);
+                    console.log('inside1:',typeof responseDateObj,typeof startObj,typeof endObj,typeof qr.question_id ,typeof question.id);
                        
                     if (
                         Number(qr.question_id) === Number(question.id) &&
