@@ -220,7 +220,6 @@ export default {
         async  filterResponsesForCurrentQuestion(question,start,end) {
             // Format the start and end dates to 'YYYY-MM-DD'
          
-                console.log('filterResponsesForCurrentQuestion:',question,this.responses,start,end);
             let fResponses=[];
             const startObj = new Date(start);
             const endObj = new Date(end);
@@ -230,12 +229,10 @@ export default {
                 const responseDate = response.created_at.split(" ")[0];
                 const responseDateObj = new Date(responseDate);
 
-                console.log('response data:',responseDate);
+                
                 return response.question_responses.map(qr => {
                     // Only include if question_id matches and within the date range
-                      console.log('inside:',responseDateObj,startObj,endObj,qr.question_id ,question.id);
-                    console.log('inside1:',typeof responseDateObj,typeof startObj,typeof endObj,typeof qr.question_id ,typeof question.id);
-                       
+                    
                     if (
                         Number(qr.question_id) === Number(question.id) &&
                         responseDateObj >= startObj &&
@@ -249,7 +246,7 @@ export default {
                     return null; // Return null if it does not match, will be filtered out later
                 }).filter(qr => qr !== null); // Filter out null values
             });
-            console.log('fResponses:',fResponses);
+           
             return fResponses;
 
 
@@ -293,7 +290,6 @@ export default {
             let  answersWithSums = [];
             // Count occurrences of each answer ID
             
-                       console.log('calcAnswersWithSums:',this.filteredResponses);
 
             this.filteredResponses.forEach(({ answer_id }) => {
                 if (answer_id) {
@@ -302,7 +298,7 @@ export default {
                         (answersWithSums[answer_id] || 0) + 1;
                 }
             });
-
+                 console.log('calcAnswersWithSums:',answersWithSums);
             return answersWithSums;
 
             
