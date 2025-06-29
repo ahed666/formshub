@@ -118,9 +118,9 @@ export default {
         },
         // while typeing answer in questions of text input 
         typeAnswer(text) {
-
+              
             this.checkAndCreateNewQuestionWithAnswerItem(Boolean(false));
-
+                
             if (text === '') {
                 this.allowNext = false;
 

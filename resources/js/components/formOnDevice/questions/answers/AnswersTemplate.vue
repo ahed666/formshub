@@ -114,18 +114,23 @@ import DrawingAnswer from './DrawingAnswer.vue';
         },
         methods:{
             checkDrawingAnswersQuestion(){
+              
                 return [6].includes(this.questionType.category_id);
 
             },
             checkDateAnswersQuestion(){
+                                                console.log('checkDateAnswersQuestion',this.questionType);
+
                 return [5].includes(this.questionType.category_id);
 
             },
             checkTextAnswersQuestion(){
+                                console.log('checkTextAnswersQuestion',this.questionType);
                 return [4].includes(this.questionType.category_id);
 
             },
             checkSatisfactionAndRatingAnswersQuestion(){
+                console.log('checkSatisfactionAndRatingAnswersQuestion',this.questionType);
                 return [3].includes(this.questionType.category_id);
 
             },
