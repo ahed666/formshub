@@ -89,7 +89,7 @@ import { AnswerMixin } from '../mixins/AnswerMixin';
        getAnswers(question_id){
         var question = this.responseData[question_id];
         var formQuestion=this.formQuestions[question_id];
-        if(question.text_response!=null||question.skip)
+        if(question.text_response!=null||(Number(question.skip) === 1 ? 1 : 0))
         return  this.initialTextAnswer(formQuestion.type.type_text,question.text_response);
         else 
         return this.getPreDefinedAnswers(formQuestion,question.answers);
