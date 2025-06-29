@@ -1,7 +1,7 @@
 <template>
     <div class="mx-16   ">
         <div class="mt-2 w-full pr-2 flex-grow flex justify-center items-center ">
-               {{ currentQuestion }}
+               
                 <LogicAnswers 
                     v-if="checkLogicQuestion()&&currentQuestion!=null" 
                     @choose_answer="chooseAnswer"
