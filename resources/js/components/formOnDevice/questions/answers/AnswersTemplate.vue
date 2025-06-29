@@ -13,7 +13,7 @@
 
                 <!-- multi answers -->
                 <MultiAnswers 
-                    v-if="checkMultiQuestion()&&currentQuestion!=null" 
+                    v-else-if="checkMultiQuestion()&&currentQuestion!=null" 
                     @choose_answer="chooseAnswer"
                     :answers="answers" 
                     :currentTranslation="currentTranslation" 
@@ -23,7 +23,7 @@
                      :answersViewMode="answersViewMode"
                 />
                 <SatisfactionAndRatingAnswers 
-                    v-if="checkSatisfactionAndRatingAnswersQuestion()&&currentQuestion!=null" 
+                    v-else-if="checkSatisfactionAndRatingAnswersQuestion()&&currentQuestion!=null" 
                     @choose_answer="chooseAnswer"
                     :answers="answers" 
                     :currentTranslation="currentTranslation" 
@@ -36,7 +36,7 @@
                 
                 <TextAnswer
                ref="TextAnswer"
-                    v-if="checkTextAnswersQuestion()&&currentQuestion!=null" 
+                    v-else-if="checkTextAnswersQuestion()&&currentQuestion!=null" 
                     @onErrorTyping="onErrorTyping"
                     @typingAnswer="typingAnswer"
                     :questionId="currentQuestion.id" 
@@ -46,7 +46,7 @@
                 />
                 <DateAnswer 
                 ref="TextAnswer"
-                    v-if="checkDateAnswersQuestion()&&currentQuestion!=null" 
+                    v-else-if="checkDateAnswersQuestion()&&currentQuestion!=null" 
                    
                     @typingAnswer="typingAnswer"
                     :questionId="currentQuestion.id" 
@@ -57,7 +57,7 @@
 
                 <DrawingAnswer 
                 @saveDrawing="saveDrawing"
-                v-if="checkDrawingAnswersQuestion() && currentQuestion"
+                v-else-if="checkDrawingAnswersQuestion() && currentQuestion"
         :questionId="currentQuestion.id"
         :questionsWithAnswers="questionsWithAnswers"
                 />
@@ -115,34 +115,34 @@ import DrawingAnswer from './DrawingAnswer.vue';
         methods:{
             checkDrawingAnswersQuestion(){
               
-                return [6].includes(this.questionType.category_id);
+                return [6].includes(Number(this.questionType.category_id));
 
             },
             checkDateAnswersQuestion(){
                                                 console.log('checkDateAnswersQuestion',this.questionType);
 
-                return [5].includes(this.questionType.category_id);
+                return [5].includes(Number(this.questionType.category_id));
 
             },
             checkTextAnswersQuestion(){
                                 console.log('checkTextAnswersQuestion',this.questionType);
-                return [4].includes(this.questionType.category_id);
+                return [4].includes(Number(this.questionType.category_id));
 
             },
             checkSatisfactionAndRatingAnswersQuestion(){
                 console.log('checkSatisfactionAndRatingAnswersQuestion',this.questionType);
-                return [3].includes(this.questionType.category_id);
+                return [3].includes(Number(this.questionType.category_id));
 
             },
             checkMultiQuestion(){
                                 console.log('checkMultiQuestion',this.questionType);
 
-                return [2].includes(this.questionType.category_id);
+                return [2].includes(Number(this.questionType.category_id));
             },
             checkLogicQuestion(){
                                                 console.log('checkLogicQuestion',this.questionType);
 
-                return [1].includes(this.questionType.category_id);
+                return [1].includes(Number(this.questionType.category_id));
 
             },
             chooseAnswer(answer,isSelected,selectionType){
