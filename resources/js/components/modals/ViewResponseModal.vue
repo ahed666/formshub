@@ -102,7 +102,7 @@ import { AnswerMixin } from '../mixins/AnswerMixin';
             console.log('getPreDefinedAnswers:',formQuestion,answersIds);
             answersIds.forEach(answerId => {
 
-                var answer=formQuestion.answers.find(answer => answer.id===answerId);
+                var answer=formQuestion.answers.find(answer => Number(answer.id)===Number(answerId));
               
                 var translation=answer.translations.find(translation => translation.language === this.currentLang);
               
