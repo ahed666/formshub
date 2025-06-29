@@ -135,10 +135,13 @@ import DrawingAnswer from './DrawingAnswer.vue';
 
             },
             checkMultiQuestion(){
-                
+                                console.log('checkMultiQuestion',this.questionType);
+
                 return [2].includes(this.questionType.category_id);
             },
             checkLogicQuestion(){
+                                                console.log('checkLogicQuestion',this.questionType);
+
                 return [1].includes(this.questionType.category_id);
 
             },
