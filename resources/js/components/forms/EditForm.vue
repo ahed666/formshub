@@ -153,7 +153,7 @@ export default {
 
         // set which question will be edit
         setSelectedEditQuestion(question) {
-            console.log('selected question to edit', question);
+            
 
             this.selectedQuestion = JSON.parse(JSON.stringify(question));
             // 1 meaning show modal as edit question
@@ -162,7 +162,7 @@ export default {
 
         //edit form name
         editFormName(name) {
-            console.log(this.form, this.currentForm);
+           
             if (name != this.currentForm.name)
                 this.ifEdit = true; // Set edit flag
             this.currentForm.name = name;
@@ -184,16 +184,14 @@ export default {
 
         // toggle langauge disable
         toggleLanguageDisable(langCode) {
-            console.log(this.formTranslations[langCode].enable);
             this.formTranslations[langCode].enable = !this.formTranslations[langCode].enable;
-            console.log(this.formTranslations[langCode].enable, this.formTranslations[langCode]);
             this.ifEdit = true; // Set edit flag
 
 
         },
         // change language name
         onSaveChangesLanguageName(index, value) {
-            console.log('changed lang name');
+           
             this.formTranslations[index].language_name = value;
             this.ifEdit = true; // Set edit flag
 
@@ -217,7 +215,7 @@ export default {
             });
 
             this.ifEdit = true; // Set edit flag
-            console.log('after:', this.formQuestions);
+           
         },
         // Update order of formQuestions items
         updateQuestionsOrder(localFormQuestions) {
@@ -225,7 +223,7 @@ export default {
             this.formQuestions.forEach((question, index) => {
                 question.order = index + 1; // Assuming order starts from 1
             });
-            console.log(this.formQuestions);
+            
             this.ifEdit = true; // Set edit flag
         },
 
@@ -238,9 +236,9 @@ export default {
             try {
                 this.isLoading = true;
                 const response = await axios.get(`/formInfo/${this.form.slug}`);
-                console.log(response.data);
+                
                 this.formQuestions = response.data.formQuestions;
-                console.log(this.formQuestions);
+             
              
                 this.formTranslations = response.data.formTranslations;
 
@@ -259,7 +257,7 @@ export default {
         showModal(type) {
               
             this.isModalVisible = true; this.typeModal = type; 
-            console.log(type,'-',this.typeModal);
+           
 
         },
 
@@ -286,7 +284,7 @@ export default {
         // after add question to forms
         addQuestionToQuestionList(props) {
             const { newQuestionText, questionOptional, questionViewAnswersMode, answers, type } = props;
-            console.log('answers:',answers);
+            
             // Check if the maximum number of items has been reached
             if (this.maxItems < this.formQuestions.length + 1) {
                 this.showAlert('error', 'Cannot add more items! You have reached the maximum number of items.');
@@ -313,12 +311,11 @@ export default {
                 newQuestion.answers.push(newAnswer); // Push the new answer to the question's answers array
             });
 
-            console.log(newQuestion);
-            console.log('before',this.formQuestions.length);
+           
             // this.formQuestions.push(newQuestion);
             this.formQuestions=[...this.formQuestions,newQuestion]
             this.ifEdit = true;
-            console.log('after',this.formQuestions.length);
+          
             // this.showAlert('success', 'question added successfully');
             // this.fetchData();
             
@@ -352,8 +349,8 @@ export default {
         // after edit question 
         editQuestion(props) {
             const {question}=props;
-            console.log(props,this.formQuestions);
-            console.log('edit the question:', question);
+           
+            
             this.formQuestions = this.formQuestions.map(q =>
                 q.id === question.id ? question : q
             );
@@ -380,7 +377,6 @@ export default {
         async saveChanges() {
 
 
-            console.log('items on save:', this.formQuestions, this.currentForm);
 
 
             this.isLoading=true;

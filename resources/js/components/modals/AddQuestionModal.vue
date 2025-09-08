@@ -134,6 +134,7 @@ export default {
 
             
             if( [4, 5, 6].includes(this.selectedQuestionType.category_id)){
+                console.log('question category:',this.selectedQuestionType.category_id);
                     return true;
             }
 
@@ -206,6 +207,7 @@ export default {
         },
         // check if disable of button is true or false;
         checkDisableSaveButton(){ 
+            console.log('checking');
              return (this.currentStep==1&&this.selectedQuestionType==null)||(this.currentStep==2&&this.questionAndAnswersFilled()==false);
 
         },

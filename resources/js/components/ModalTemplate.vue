@@ -57,7 +57,7 @@
                       <ButtonComponent :btnClass="'bg-gray-400  w-14'" :handleClick="closeModal"  >
                         {{translations.buttons.cancel}}
                       </ButtonComponent>
-                    
+                       {{disableButtons}}
                       <ButtonComponent v-if="showButtons" :disabled="disableButtons"  
                       :btnClass="'bg-secondary_blue  w-20'" :handleClick="handleButtonClick"  >
                           <span v-if="isSaving" class="mr-2">{{translations.titles.saving}}</span>
