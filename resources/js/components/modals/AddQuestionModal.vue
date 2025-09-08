@@ -134,8 +134,8 @@ export default {
                 return false;
             }
 
-            console.log('question category:',this.selectedQuestionType.category_id);
-            if( [4, 5, 6].includes(this.selectedQuestionType.category_id)){
+            console.log('question category:',typeof(this.selectedQuestionType.category_id), this.selectedQuestionType.category_id);
+            if( [4, 5, 6].includes(Number(this.selectedQuestionType.category_id))){
                 console.log('question category included');
                     return true;
             }
