@@ -134,7 +134,7 @@ export default {
             }
 
             
-            if( [4, 5, 6].includes(Number(this.selectedQuestionType.category_id))){
+            if( [4, 5, 6].includes(Number(this.currentQuestion.questionType.category_id))){
                     return true;
             }
 
