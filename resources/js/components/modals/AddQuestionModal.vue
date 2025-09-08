@@ -127,14 +127,15 @@ export default {
 
             // Check if question text is empty
             if (isEmpty(this.questionText)) {
+                console.log('this.questionText:',this.questionText);
                 this.errorMessage = translations.forms.fill_questiontext_warning;
                 
                 return false;
             }
 
-            
+            console.log('question category:',this.selectedQuestionType.category_id);
             if( [4, 5, 6].includes(this.selectedQuestionType.category_id)){
-                console.log('question category:',this.selectedQuestionType.category_id);
+                console.log('question category included');
                     return true;
             }
 
