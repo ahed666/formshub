@@ -122,21 +122,21 @@ export default {
         // check if question and answers is not empty
         questionAndAnswersFilled() 
         {
-            console.log('questionAndAnswersFilled');
+           
         
             const isEmpty = str => !str || str.trim() === '';
 
             // Check if question text is empty
             if (isEmpty(this.questionText)) {
-                console.log('this.questionText:',this.questionText);
+                
                 this.errorMessage = translations.forms.fill_questiontext_warning;
                 
                 return false;
             }
 
-            console.log('question category:',typeof(this.selectedQuestionType.category_id), this.selectedQuestionType.category_id);
+            
             if( [4, 5, 6].includes(Number(this.selectedQuestionType.category_id))){
-                console.log('question category included');
+                
                     return true;
             }
 
@@ -209,7 +209,7 @@ export default {
         },
         // check if disable of button is true or false;
         checkDisableSaveButton(){ 
-            console.log('checking',this.currentStep==1&&this.selectedQuestionType==null,this.currentStep==2&&this.questionAndAnswersFilled()===false,this.questionAndAnswersFilled()===false);
+            //console.log('checking',this.currentStep==1&&this.selectedQuestionType==null,this.currentStep==2&&this.questionAndAnswersFilled()===false,this.questionAndAnswersFilled()===false);
              return (this.currentStep==1&&this.selectedQuestionType==null)||(this.currentStep==2&&this.questionAndAnswersFilled()===false);
 
         },
