@@ -78,7 +78,7 @@ import { AnswerMixin } from '../mixins/AnswerMixin';
         this.$emit('close');
       },
       getQuestionText(question_id){
-        console.log('form questions',this.formQuestions);
+       
         var question = this.formQuestions[question_id];
         if (!question) return null; // Handle case where question is not found
 
@@ -99,7 +99,7 @@ import { AnswerMixin } from '../mixins/AnswerMixin';
       
         getPreDefinedAnswers(formQuestion,answersIds){
             var answersText=[];
-            console.log('getPreDefinedAnswers:',formQuestion,answersIds);
+           
             answersIds.forEach(answerId => {
 
                 var answer=formQuestion.answers.find(answer => Number(answer.id)===Number(answerId));

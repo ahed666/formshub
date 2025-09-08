@@ -133,6 +133,7 @@ export default {
                 return false;
             }
 
+            
             if( [4, 5, 6].includes(this.currentQuestion.questionType.category_id)){
                     return true;
             }
@@ -140,7 +141,7 @@ export default {
             // Check if answers are missing or empty
             if (!this.currentQuestion.answers.length || this.currentQuestion.answers.some(item => isEmpty(item.text[this.currentLang]))) {
                 this.errorMessage = !this.currentQuestion.answers.length ? this.translations.forms.add_answers_warning : this.translations.forms.fill_answertext_warning;
-                console.log(this.errorMessage);
+            
 
                 return false;
             }
@@ -197,7 +198,7 @@ export default {
             if(!this.questionAndAnswersFilled)return false;
 
             this.isSaving = true;
-           console.log('saving');
+           
 
 
              this.$emit('saved', this.currentQuestion);

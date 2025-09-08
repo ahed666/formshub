@@ -113,7 +113,7 @@ export default {
           }).catch(error => {
 
             this.showAlert('error', 'Failed to add form');
-            console.log(error);
+            
           });
            this.$emit('close');
           this.isSaving = false;

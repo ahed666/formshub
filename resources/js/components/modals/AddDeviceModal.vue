@@ -159,7 +159,7 @@
     // used to focus on next input of pin inputs,when enter digit of current pin input then make focus on next
     focusNext(index,)
     {
-        console.log(this.$refs,index);
+       
         if(this.pin.some(item => item === '')==false&&index===4)
      this.submitPin();
        else if(index < 4)
@@ -173,11 +173,11 @@
         this.submittingStatusMessage = 'Submitting your PIN...';
         this.currentPin = this.pin.join('');
         // Implement logic to submit PIN (e.g., call route to check device availability)
-        console.log('Submitting PIN:', this.currentPin);
+       
         // Example: Call your Laravel route to check device availability
         axios.get(`/check-avilable-device/${this.currentPin}`)
                   .then(response => {
-                      console.log(response.data);
+                      
                       this.isSubmitting = false;
 
                       this.result=response.data.message;
@@ -197,7 +197,7 @@
         //  this result true mean if there is deivce code avilable in table and the pin is correct
         if(this.result)
         {
-            console.log(this.deviceName);
+            
             if (!this.deviceName ) {
             this.validationMessage = 'Please type device name';
             return;
@@ -217,7 +217,7 @@
         // if can add device with allow feature (add device) in subscription
         if(response.data.can)
         { this.closeModal();
-          console.log('Device added:', response.data);
+          
 
           this.$emit('saved', response.data.device,response.data.message);
         }

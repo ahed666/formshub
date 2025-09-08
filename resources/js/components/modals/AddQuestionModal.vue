@@ -122,7 +122,7 @@ export default {
         // check if question and answers is not empty
         questionAndAnswersFilled() 
         {
-            console.log(this.currentAnswers);
+        
             const isEmpty = str => !str || str.trim() === '';
 
             // Check if question text is empty
@@ -132,6 +132,7 @@ export default {
                 return false;
             }
 
+            
             if( [4, 5, 6].includes(this.selectedQuestionType.category_id)){
                     return true;
             }
@@ -141,7 +142,6 @@ export default {
             // Check if answers are missing or empty
             if (!this.currentAnswers.length || this.currentAnswers.some(item => isEmpty(item.text[this.currentLang]))) {
                 this.errorMessage = !this.currentAnswers.length ? this.translations.forms.add_answers_warning : this.translations.forms.fill_answertext_warning;
-                console.log(this.errorMessage,this.currentAnswers.length,this.currentAnswers.some(item => isEmpty(item.text[this.currentLang])),this.currentLang);
                 return false;
             }
 
@@ -177,7 +177,7 @@ export default {
             try {
                 const response = await axios.get('/questioncategories');
                 this.questionCategories = response.data;
-                console.log(response.data);
+                
                 this.isLoading = false;
             } catch (error) {
                 console.error('Error fetching question:', error);
@@ -216,7 +216,7 @@ export default {
             if(!this.questionAndAnswersFilled)return false;
 
             this.isSaving = true;
-           console.log('saving');
+          
 
 
              this.$emit('saved', this.questionText,this.questionOptional,this.questionViewAnswersMode,this.currentAnswers,this.selectedQuestionType);
