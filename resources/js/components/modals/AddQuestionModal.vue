@@ -122,6 +122,7 @@ export default {
         // check if question and answers is not empty
         questionAndAnswersFilled() 
         {
+            console.log('questionAndAnswersFilled');
         
             const isEmpty = str => !str || str.trim() === '';
 
