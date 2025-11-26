@@ -35,7 +35,7 @@ class DashboardController extends Controller
        
        $data=[
         'info'=>$info,
-        'subscription'=>$subscription->getdata(),
+        'subscription'=>$subscription?->getdata()||null,
         'devices'=>$devices,
         'forms'=>$forms,
         'responsesPerForm'=>$responsesPerForm,
@@ -71,7 +71,7 @@ class DashboardController extends Controller
         $formsCount=Auth::user()->forms()->count();
         $devicesCount=Auth::user()->devices()->count();
         
-        if($subscription->status()==200)
+        if($subscription&&$subscription->status()==200)
         {
                 
         $metaFeatures=json_decode(

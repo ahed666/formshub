@@ -18,7 +18,7 @@ use App\Events\FormUpdated;
 use Laravel\Fortify\RoutePath;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->away('https://formshub.net');
 });
 
 
