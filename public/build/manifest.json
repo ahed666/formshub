@@ -1,16 +1,23 @@
 {
+  "public/images/deafult/uploading.jpeg": {
+    "file": "assets/uploading-DxnfBhGE.jpeg",
+    "src": "public/images/deafult/uploading.jpeg"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-BId_Qg3b.css",
+    "file": "assets/app-BdpJXoYK.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CYCrGwyM.js",
+    "file": "assets/app-CdYDLlny.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-BBqzF1Qa.css"
+      "assets/app-2xcPR5w6.css"
+    ],
+    "assets": [
+      "assets/uploading-DxnfBhGE.jpeg"
     ]
   }
 }
