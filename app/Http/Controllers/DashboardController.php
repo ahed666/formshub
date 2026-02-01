@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Services\DeviceService;
 use App\Services\FormService;
 use App\Http\Controllers\SubscriptionController;
+use Illuminate\Support\Facades\Log;
 
 class DashboardController extends Controller
 {
@@ -32,10 +33,10 @@ class DashboardController extends Controller
        $responsesPerForm=$this->getResponsesPerForm($forms);
        $responsesPerDevice=$this->getResponsesPerdevice($devices);
         // dd($responsesPerDevice,$responsesPerForm,$forms,$devices);
-       
+       log::info('data',[$subscription->getdata()]);
        $data=[
         'info'=>$info,
-        'subscription'=>$subscription?->getdata()||null,
+        'subscription'=>$subscription?->getdata()??null ,
         'devices'=>$devices,
         'forms'=>$forms,
         'responsesPerForm'=>$responsesPerForm,

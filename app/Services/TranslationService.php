@@ -42,8 +42,15 @@ class TranslationService
     {
         foreach ($answerTranslations as $lang => $translation) {
             AnswerTranslation::updateOrCreate(
-                ['answer_id' => $answer->id, 'language' => $lang,'answer_text' => $translation]
+                [
+                    'answer_id' => $answer->id,
+                    'language'  => $lang,
+                ],
+                [
+                    'answer_text' => $translation,
+                ]
             );
         }
     }
+
 }

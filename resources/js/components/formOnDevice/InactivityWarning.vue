@@ -24,8 +24,8 @@ export default {
     return {
       inactivityTimeout: null, // Holds the inactivity timeout reference
       showWarning: false, // Controls visibility of the warning message
-      warningDelay: 2 * 60 * 1000, // Show warning after 2 minutes (120000 milliseconds)
-      remainingTime: 120, // Time remaining before the page refreshes after showing the warning (120 seconds)
+      warningDelay: 1 * 60 * 1000, // Show warning after 2 minutes (120000 milliseconds)
+      remainingTime: 15, // Time remaining before the page refreshes after showing the warning (120 seconds)
       refreshDelay: 30 * 1000, // Additional 30 seconds delay before refreshing the page
       countdownInterval: null, // Reference to the countdown interval
       warningTimeout: null // Holds the warning timeout reference for the final refresh
@@ -77,12 +77,12 @@ export default {
       clearTimeout(this.inactivityTimeout);
       this.startInactivityTimer();
 
-      // Reset remaining time to 120 seconds for the next countdown
-      this.remainingTime = 120;
+      // Reset remaining time to 15 seconds for the next countdown
+      this.remainingTime = 15;
     },
     // Start the countdown timer for 120 seconds
     startCountdown() {
-      this.remainingTime = 120; // Set the countdown to 120 seconds (2 minutes)
+      this.remainingTime = 15; // Set the countdown to 15 seconds 
       this.countdownInterval = setInterval(() => {
         this.remainingTime--;
         if (this.remainingTime <= 0) {

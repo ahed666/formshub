@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Models\Question;
 use App\Models\Answer;
 use App\Models\QuestionCategory;
-
+use Illuminate\Support\Facades\Log;
 class QuestionService
 {
     public function getFormQuestions($formId)
@@ -70,6 +70,7 @@ class QuestionService
             
         }
 
+
       isset($questionData['questionText'])?app(TranslationService::class)->updateQuestionTranslations($question, $questionData['questionText']):'';
         isset($questionData['answers'])?$this->updateAnswers($question, $questionData['answers']):'';
 
@@ -104,6 +105,7 @@ class QuestionService
         
         foreach ($answersData as $answerData) {
             if (isset($answerData['id']) && !str_starts_with($answerData['id'], 'new-answer-')) {
+                log::info('update answer:',[$answerData]);
                 // Existing answer, update it
                 $answer = Answer::find($answerData['id']);
                 if ($answer) {
@@ -119,6 +121,7 @@ class QuestionService
             {
                 
                 // New answer, create it
+                log::info('create answer:',[$answerData]);
                 $answer = Answer::create([
                     'question_id' => $question->id,
                     'hide' => $answerData['hide']==="true"?1:0,

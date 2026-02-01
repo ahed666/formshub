@@ -2,7 +2,7 @@
 <template>
     <label for="name" class="text-md"> Form Name</label>
     <div  v-if="editMode" class="flex space-x-4  rtl:space-x-reverse items-center">
-          <input ref="nameInput" maxlength="30" name="name" type="text" v-model="name"  :value="name" class="p-2 rounded focus:border-y-secondary_blue border-[1px]
+          <input ref="nameInput" maxlength="30" name="name" type="text" v-model="name"   class="p-2 rounded focus:border-y-secondary_blue border-[1px]
           2xl:w-1/2 xl:w-1/2 lg:w-full md:w-full xs:w-full overflow-hidden">
           <ButtonComponent :btnClass="'bg-secondary_blue hover:bg-blue-700'" :handleClick="edit">
                     <span>{{ translations.buttons.save }}</span>

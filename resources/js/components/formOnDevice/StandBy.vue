@@ -1,5 +1,5 @@
-<template>
-    <div class="grid justify-center items-center">
+<template class="">
+    <div class="grid justify-center items-center w-full h-full">
        <img :src="standByImagepath" width="100%" height="100%" alt="" srcset="">
     </div>
 </template>
@@ -9,7 +9,7 @@
         components:{},
         data(){
             return{
-                standByImagepath:'/images/deafult/standBy.gif',
+                standByImagepath:'/images/deafult/standBy1.png',
             }
         },
     }

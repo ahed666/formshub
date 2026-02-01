@@ -1,8 +1,9 @@
 <template>
    
    <div>
-    <div class="my-1 min-h-5 flex justify-center items-center">
+    <div class="my-1 min-h-2 span  justify-center items-center">
       <span v-if="phoneError" class="text-red-600 text-sm">{{ phoneError }}</span>
+      
     </div>
    
     <div class="space-x-2 flex mb-2 items-center">
@@ -18,6 +19,7 @@
       </select>
   
       <input
+      :disabled="true"
         type="tel"
         v-model="inputText"
         @input="validatePhoneNumber"
@@ -29,6 +31,7 @@
       />
     </div>
     
+    <div class="flex justify-center items-center" v-if="!selectedCountryCode" v-html="'please select the country code to enable the keyboard'"> </div>
     <NumberKeyboard  :enable="enableNumberKeyboard"  @key-press="addToInput" @backspace="removeLastCharacter"
      />
 

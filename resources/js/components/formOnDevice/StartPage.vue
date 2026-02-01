@@ -1,8 +1,10 @@
 <template>
+
     <div class="grid justify-center items-center p-14"v-if="formTranslations!=null">
         
+        <div class="flex justify-center items-center mb-8"><img class="h-auto w-48" :src="logo" alt=""></div>
         <vue-carousel :data="formTranslationsData" :indicators="false" :controls="false"></vue-carousel>
- 
+        
          <div class="md:flex xs:grid justify-center items-center gap-4 mt-20">
             <button @click="startForm(translation)" class="border-gray-300 bg-[#F9FAFB] hover:bg-gray-100 border-[2px] rounded-lg text-2xl w-48 max-w-[48] min-w-[48] h-24 font-bold" v-for="(translation,index) in formTranslations">
                   {{ translation.language_name }}
@@ -28,6 +30,10 @@ import VueCarousel from '@chenfengyuan/vue-carousel';
         props:{
             formTranslations:{
                 type:Object,
+                Required:false,
+            },
+            logo:{
+                type:String,
                 Required:false,
             },
         },

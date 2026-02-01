@@ -11,7 +11,7 @@
                         <div class="flex justify-center items-center space-x-2 rtl:space-x-reverse">
                             <div v-for="(digit, index) in pin" :key="index">
                             <input
-                                :value="digit"
+                                
                                 type="text"
                               @keypress="isDigit"
                                 maxlength="1"

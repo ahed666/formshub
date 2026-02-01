@@ -8,6 +8,7 @@ export const AnswerMixin = {
         let translation = answer.translations.find(
           (translation) => translation.language === this.currentTranslation.language
         );
+        console.log(translation);
         return translation ? translation.answer_text : 'Translation not available';
       },
       getAnswerText(answer){

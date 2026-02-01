@@ -17,9 +17,9 @@ use Laravel\Fortify\Http\Controllers\EmailVerificationPromptController;
 use App\Events\FormUpdated;
 use Laravel\Fortify\RoutePath;
 
-Route::get('/', function () {
-    return redirect()->away('https://formshub.net');
-});
+// Route::get('/', function () {
+//     return redirect()->away('https://formshub.net');
+// });
 
 
 Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);

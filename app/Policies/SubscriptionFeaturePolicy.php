@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Plan;
 // use Laravel\Cashier\Subscription;
 use Stripe\Subscription;
+use Illuminate\Support\Facades\Log;
 
  use Stripe\Stripe;
 use Illuminate\Support\Facades\Auth;
@@ -24,27 +25,27 @@ class SubscriptionFeaturePolicy
         if (!$user || !$user->stripe_id) {
             return null;
         }
-
+  
 
         $subscriptions = Subscription::all([
             'customer' => $user->stripe_id,
             'status' => 'all', // optional: 'active', 'trialing'...
             'limit' => 1,
         ]);
-
+           log::info('got:',[$subscriptions]);
         return $subscriptions->data[0] ?? null;
 }
 
     public function canAdd($type,$user)
     {
         
-        
+        log::info('user :',[$user]);
         if(!$user)
         return false;
         
         // Fetch the user's active subscription and its feature limits
         $userSubscription = $this->getStripeLatestSubscription($user);
-        
+       log::info('user subscription:',[$userSubscription]);
         if (!$userSubscription||!in_array($userSubscription->status, ['active', 'trialing'])) {
             $url=route('subscriptions.index');
             return response()->json(['result' => false,'resultmessage'=>"Your subscription is not active,visit <a class=\"text-secondary_blue\" href=\"$url\">Subscriptions</a> to renew"]);

@@ -6,6 +6,7 @@
         <Info :info="data.info" />
       </div>
       <div class="bg-white rounded-lg shadow p-4">
+        
         <SubscriptionBox :subscription="data.subscription" />
       </div>
     </div>

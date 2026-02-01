@@ -10,6 +10,7 @@ use Stripe\Price;
 use Carbon\Carbon;
 use Stripe\Invoice;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 
 use Illuminate\Support\Facades\Auth;
@@ -44,7 +45,9 @@ class SubscriptionController extends Controller
     // check if user can make actions like add forms or add devices dependent on current subscription
     public function canUserMakeAction($action)
     {
+       
         $user=User::findOrFail(Auth::user()->id);
+        log::info('can',[$user]);
         switch ($action) {
             case 'addform':
                 return $this->featurePolicy->canAdd('form',$user);
@@ -141,8 +144,7 @@ class SubscriptionController extends Controller
         // Sort subscriptions by created date (most recent first)
         $lastSubscription = collect($subscriptions->data)->sortByDesc('created')->first();
         
-       
-       
+        
         if (!$lastSubscription) {
             return response()->json(['message' => 'No active subscription found'], 404);
         }

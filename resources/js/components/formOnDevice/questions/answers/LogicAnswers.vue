@@ -12,7 +12,7 @@
                                     hover:text-gray-600 hover:bg-gray-100
         "
          :for="'answer-'+answer.id">
-            <h1>{{ getCurrentAnswerText(answer) }}</h1>
+            <h1>{{ getCurrentAnswerText(answer) }} </h1>
             <img v-if="answer.image != null" class="rounded-full object-contain w-14 ml-1 mr-1" :src="answer.image"
                 alt="">
         </label>
