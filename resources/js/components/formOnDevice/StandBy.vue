@@ -1,6 +1,6 @@
 <template class="">
-    <div class="grid justify-center items-center w-full h-full">
-       <img :src="standByImagepath" width="100%" height="100%" alt="" srcset="">
+    <div class="grid justify-center items-center max-h-[100vh] max-w-[100vw] min-h-[100vh] rotate-0">
+       <img :src="standByImagepath" class="h-48 w-54" alt="" srcset="">
     </div>
 </template>
 

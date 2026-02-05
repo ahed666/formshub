@@ -3,7 +3,7 @@
     <div v-if="questionType != null">
         <div v-if="questionType.type_text === 'number'" class="p-2 w-full">
 
-                <PhoneNumberInput @update:error="onErrorTyping"  @update:phoneNumber="handlePhoneNumberUpdate" />
+                <PhoneNumberInput  @update:error="onErrorTyping"  @update:phoneNumber="handlePhoneNumberUpdate" />
             
         </div>
 
@@ -14,7 +14,7 @@
             <!-- Fallback for other input types -->
             <div  class="grid  items-center mb-2">
 
-                <input ref="textInput" id="textinput" name="textinput"
+                <input :disabled="true" ref="textInput" id="textinput" name="textinput"
                  type="text" v-model="inputText" placeholder="Type here..."
                     class="border border-gray-300 p-2 w-full " />
             </div>

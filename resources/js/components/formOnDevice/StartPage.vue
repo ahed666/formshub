@@ -68,8 +68,8 @@ import VueCarousel from '@chenfengyuan/vue-carousel';
             for (const translation of Object.values(translations)) {
                 const content = `
                     <div class="grid justify-center items-center">
-                        <h1 class="font-bold text-5xl select-none mb-5 text-center">${translation.start_header}</h1>
-                        <h2 class="font-weight-bolder text-3xl select-none text-center">${translation.start_message}</h2>
+                        <h1 class="font-bold text-5xl leading-tight select-none mb-5 text-center">${translation.start_header}</h1>
+                        <h2 class="font-weight-bolder leading-tight text-3xl select-none text-center">${translation.start_message}</h2>
                     </div>`;
                 this.formTranslationsData.push(content);
             }

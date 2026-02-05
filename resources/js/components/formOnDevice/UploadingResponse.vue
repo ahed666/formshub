@@ -3,7 +3,7 @@
           <div class="animate-bounce">
             <UploadSvg />
           </div>
-          <h1 class="mt-1 text-bold">uploading response - Please wait...</h1>
+        
        
     </div>
 </template>

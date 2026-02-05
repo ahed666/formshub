@@ -46,20 +46,24 @@
 import NumberKeyboard from './NumberKeyboard.vue';
   
   export default {
-    data() {
-      return {
-        inputText: '',
-        phoneError: '',
-        selectedCountryCode:null,
-        enableNumberKeyboard:false,
-        countryCodes: Object.values(COUNTRIES ).map(country => ({
-          name: country.name,
-          code: country.code,
-          mobileCode:country.mobileCode,
-        })),
-      };
-    },
-    
+  data() {
+  const countries = Object.values(COUNTRIES).map(country => ({
+    name: country.name,
+    code: country.code,
+    mobileCode: country.mobileCode,
+  }));
+
+  const uae = countries.find(c => c.code === 'AE');
+
+  return {
+    inputText: '',
+    phoneError: '',
+    selectedCountryCode: uae || null,
+    enableNumberKeyboard: !!uae,
+    countryCodes: countries,
+  };
+},
+
     components:{
         NumberKeyboard
     },

@@ -1,7 +1,11 @@
 {
-  "public/images/deafult/uploading.jpeg": {
-    "file": "assets/uploading-DxnfBhGE.jpeg",
-    "src": "public/images/deafult/uploading.jpeg"
+  "public/images/deafult/success.svg": {
+    "file": "assets/success-CTfwDVKX.svg",
+    "src": "public/images/deafult/success.svg"
+  },
+  "public/images/deafult/uploading.svg": {
+    "file": "assets/uploading-ldWsqDHF.svg",
+    "src": "public/images/deafult/uploading.svg"
   },
   "resources/css/app.css": {
     "file": "assets/app-BdpJXoYK.css",
@@ -9,15 +13,16 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CdYDLlny.js",
+    "file": "assets/app-X8pedx3d.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-2xcPR5w6.css"
+      "assets/app-BrHWThJ_.css"
     ],
     "assets": [
-      "assets/uploading-DxnfBhGE.jpeg"
+      "assets/uploading-ldWsqDHF.svg",
+      "assets/success-CTfwDVKX.svg"
     ]
   }
 }

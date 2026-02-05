@@ -68,11 +68,11 @@
            // defult values for answers 
            predefinedAnswers: {
            'satisfaction': [
-           { id: '0', text: { lang1: 'Very Unsatisfied', lang2: 'Very Unsatisfied' }, image: '/images/icons/emoji/1.png' },
-           { id: '1', text: { lang1: 'Unsatisfied', lang2: 'Unsatisfied' }, image: '/images/icons/emoji/2.png' },
-           { id: '2', text: { lang1: 'Natural', lang2: 'Natural' }, image: '/images/icons/emoji/3.png' },
-           { id: '3', text: { lang1: 'Satisfied', lang2: 'Satisfied' }, image: '/images/icons/emoji/4.png' },
-           { id: '4', text: { lang1: 'Very Satisfied', lang2: 'Very Satisfied' }, image: '/images/icons/emoji/5.png' }
+           { id: '0', text: { lang1: 'Very Unsatisfied', lang2: 'Very Unsatisfied' }, image: '/images/icons/emoji/1.svg' },
+           { id: '1', text: { lang1: 'Unsatisfied', lang2: 'Unsatisfied' }, image: '/images/icons/emoji/2.svg' },
+           { id: '2', text: { lang1: 'Natural', lang2: 'Natural' }, image: '/images/icons/emoji/3.svg' },
+           { id: '3', text: { lang1: 'Satisfied', lang2: 'Satisfied' }, image: '/images/icons/emoji/4.svg' },
+           { id: '4', text: { lang1: 'Very Satisfied', lang2: 'Very Satisfied' }, image: '/images/icons/emoji/5.svg' }
            ],
            'rating':[
            { id: '0', text: { lang1: '1', lang2: '1' }, image: null },
